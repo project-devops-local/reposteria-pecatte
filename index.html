@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Montserrat:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Montserrat:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
 /* Paleta y tipografía tomadas del manual de marca Pecatté */
 :root {
@@ -90,8 +90,6 @@ p { margin: 0; }
 .arch { position: relative; aspect-ratio: 3/4; border-radius: 999px 999px 28px 28px; overflow: hidden; background: #000; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1.5px rgba(201,162,122,.35); transform: rotate(2deg); animation: fade 1.2s .3s var(--ease) both; }
 .arch video { width: 100%; height: 100%; object-fit: cover; }
 .arch::after { content: ""; position: absolute; inset: 10px; border-radius: inherit; border: 1px solid rgba(246,235,221,.3); pointer-events: none; }
-.sound { position: absolute; right: 18px; bottom: 18px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(42,23,15,.6); backdrop-filter: blur(8px); color: var(--merengue); display: grid; place-items: center; cursor: pointer; }
-.sound svg { width: 20px; height: 20px; }
 .badge { position: absolute; left: -64px; bottom: 40px; width: 168px; height: 168px; z-index: 3; animation: fade 1s .8s var(--ease) both; }
 .badge .ring { position: absolute; inset: 0; animation: spin 18s linear infinite; }
 .badge .ring text { font: 700 10.5px var(--label); letter-spacing: 3.2px; fill: var(--merengue); text-transform: uppercase; }
@@ -134,58 +132,46 @@ section { position: relative; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* Anatomía del pecado */
-.anatomy { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
-.cup-wrap { position: relative; display: grid; place-items: center; padding: 30px 0 10px; }
-.cup { position: relative; width: min(330px, 78vw); aspect-ratio: 330/420; display: flex; flex-direction: column-reverse; clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%); background: rgba(255,255,255,.35); }
-.cup::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(255,255,255,.55) 0 6%, transparent 14% 70%, rgba(255,255,255,.25) 78%, transparent 86%); pointer-events: none; }
-.layer { position: relative; width: 100%; cursor: pointer; transform: translateY(-140%); opacity: 0; transition: transform 1s var(--ease), opacity .6s, filter .4s; }
-.anatomy.in .layer { transform: none; opacity: 1; }
-.anatomy.in .layer:nth-child(2) { transition-delay: .15s; }
-.anatomy.in .layer:nth-child(3) { transition-delay: .3s; }
-.anatomy.in .layer:nth-child(4) { transition-delay: .45s; }
-.anatomy.in .layer:nth-child(5) { transition-delay: .6s; }
-.cup:hover .layer:not(:hover):not(.active), .cup.picking .layer:not(.active) { filter: saturate(.4) brightness(.92); }
-.l-galleta { flex: 0 0 17%; background: radial-gradient(circle at 20% 30%, #8a5a2f 2px, transparent 3px) 0 0/14px 12px, radial-gradient(circle at 70% 60%, #d9a866 2.5px, transparent 3.5px) 0 0/18px 14px, linear-gradient(#b67a40, #8b5527); }
-.l-crema { flex: 0 0 20%; background: radial-gradient(ellipse at 50% 0%, #fff 0 40%, transparent 41%) 0 -10px/44px 22px repeat-x, linear-gradient(#fffaf2, #f3e6d3); }
-.l-fruta { flex: 0 0 24%; background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="330" height="100" viewBox="0 0 330 100"%3E%3Crect x="4" y="12" width="18" height="17" rx="4" fill="%23C8414B" transform="rotate%28-21 13.0 16.5%29"/%3E%3Crect x="27" y="7" width="21" height="18" rx="4" fill="%23C8414B" transform="rotate%287 37.5 17.0%29"/%3E%3Crect x="52" y="7" width="17" height="17" rx="4" fill="%235B2A4A" transform="rotate%28-21 60.5 16.5%29"/%3E%3Crect x="74" y="5" width="24" height="17" rx="4" fill="%23C8414B" transform="rotate%2811 86.0 16.5%29"/%3E%3Crect x="105" y="7" width="16" height="18" rx="4" fill="%235B2A4A" transform="rotate%28-22 113.0 17.0%29"/%3E%3Crect x="125" y="10" width="24" height="20" rx="4" fill="%23F2A33A" transform="rotate%28-7 137.0 18.0%29"/%3E%3Crect x="155" y="6" width="24" height="14" rx="4" fill="%237FAE3C" transform="rotate%2810 167.0 15.0%29"/%3E%3Ccircle cx="167.0" cy="17.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="184" y="5" width="19" height="16" rx="4" fill="%23E0525C" transform="rotate%2810 193.5 16.0%29"/%3E%3Crect x="207" y="9" width="19" height="17" rx="4" fill="%235B2A4A" transform="rotate%2824 216.5 16.5%29"/%3E%3Crect x="237" y="6" width="23" height="16" rx="4" fill="%237FAE3C" transform="rotate%28-10 248.5 16.0%29"/%3E%3Ccircle cx="248.5" cy="18.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="267" y="11" width="17" height="18" rx="4" fill="%237FAE3C" transform="rotate%288 275.5 17.0%29"/%3E%3Ccircle cx="275.5" cy="19.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="293" y="12" width="23" height="16" rx="4" fill="%23E0525C" transform="rotate%28-18 304.5 16.0%29"/%3E%3Crect x="326" y="11" width="18" height="20" rx="4" fill="%239CC955" transform="rotate%28-16 335.0 18.0%29"/%3E%3Ccircle cx="335.0" cy="20.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="-5" y="33" width="17" height="20" rx="4" fill="%239CC955" transform="rotate%28-4 3.5 42.0%29"/%3E%3Ccircle cx="3.5" cy="44.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="23" y="35" width="23" height="14" rx="4" fill="%23E0525C" transform="rotate%28-8 34.5 39.0%29"/%3E%3Crect x="51" y="35" width="16" height="19" rx="4" fill="%237FAE3C" transform="rotate%2816 59.0 41.5%29"/%3E%3Ccircle cx="59.0" cy="43.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="75" y="35" width="22" height="19" rx="4" fill="%239CC955" transform="rotate%28-24 86.0 41.5%29"/%3E%3Ccircle cx="86.0" cy="43.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="106" y="28" width="18" height="18" rx="4" fill="%23E0525C" transform="rotate%286 115.0 41.0%29"/%3E%3Crect x="131" y="34" width="20" height="15" rx="4" fill="%23F7C35A" transform="rotate%280 141.0 39.5%29"/%3E%3Crect x="162" y="36" width="17" height="15" rx="4" fill="%23F2E3A8" transform="rotate%280 170.5 39.5%29"/%3E%3Crect x="187" y="32" width="18" height="20" rx="4" fill="%235B2A4A" transform="rotate%2810 196.0 42.0%29"/%3E%3Crect x="215" y="30" width="21" height="19" rx="4" fill="%235B2A4A" transform="rotate%28-11 225.5 41.5%29"/%3E%3Crect x="241" y="31" width="18" height="15" rx="4" fill="%23F7C35A" transform="rotate%2817 250.0 39.5%29"/%3E%3Crect x="263" y="32" width="23" height="20" rx="4" fill="%23F2A33A" transform="rotate%28-9 274.5 42.0%29"/%3E%3Crect x="290" y="33" width="18" height="17" rx="4" fill="%239CC955" transform="rotate%2814 299.0 40.5%29"/%3E%3Ccircle cx="299.0" cy="42.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="314" y="36" width="24" height="18" rx="4" fill="%23C8414B" transform="rotate%284 326.0 41.0%29"/%3E%3Crect x="6" y="58" width="22" height="17" rx="4" fill="%23E0525C" transform="rotate%285 17.0 64.5%29"/%3E%3Crect x="32" y="54" width="19" height="14" rx="4" fill="%23F7C35A" transform="rotate%283 41.5 63.0%29"/%3E%3Crect x="56" y="52" width="21" height="18" rx="4" fill="%23C8414B" transform="rotate%28-19 66.5 65.0%29"/%3E%3Crect x="83" y="52" width="24" height="14" rx="4" fill="%239CC955" transform="rotate%2814 95.0 63.0%29"/%3E%3Ccircle cx="95.0" cy="65.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="112" y="56" width="19" height="18" rx="4" fill="%235B2A4A" transform="rotate%28-16 121.5 65.0%29"/%3E%3Crect x="140" y="59" width="21" height="17" rx="4" fill="%23E0525C" transform="rotate%28-18 150.5 64.5%29"/%3E%3Crect x="172" y="54" width="23" height="17" rx="4" fill="%237FAE3C" transform="rotate%28-20 183.5 64.5%29"/%3E%3Ccircle cx="183.5" cy="66.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="200" y="54" width="21" height="19" rx="4" fill="%237FAE3C" transform="rotate%285 210.5 65.5%29"/%3E%3Ccircle cx="210.5" cy="67.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="233" y="60" width="16" height="15" rx="4" fill="%239CC955" transform="rotate%28-16 241.0 63.5%29"/%3E%3Ccircle cx="241.0" cy="65.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="253" y="56" width="24" height="16" rx="4" fill="%23E0525C" transform="rotate%2819 265.0 64.0%29"/%3E%3Crect x="289" y="55" width="21" height="15" rx="4" fill="%239CC955" transform="rotate%2824 299.5 63.5%29"/%3E%3Ccircle cx="299.5" cy="65.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="322" y="55" width="24" height="20" rx="4" fill="%239CC955" transform="rotate%2815 334.0 66.0%29"/%3E%3Ccircle cx="334.0" cy="68.0" r="1.6" fill="%232b2b2b"/%3E%3Crect x="1" y="84" width="22" height="19" rx="4" fill="%23F7C35A" transform="rotate%28-13 12.0 89.5%29"/%3E%3Crect x="34" y="80" width="21" height="19" rx="4" fill="%23C8414B" transform="rotate%28-24 44.5 89.5%29"/%3E%3Crect x="66" y="81" width="20" height="15" rx="4" fill="%239CC955" transform="rotate%283 76.0 87.5%29"/%3E%3Ccircle cx="76.0" cy="89.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="95" y="83" width="17" height="15" rx="4" fill="%23E0525C" transform="rotate%28-11 103.5 87.5%29"/%3E%3Crect x="119" y="76" width="21" height="15" rx="4" fill="%23F2E3A8" transform="rotate%2814 129.5 87.5%29"/%3E%3Crect x="151" y="77" width="21" height="20" rx="4" fill="%23E0525C" transform="rotate%2817 161.5 90.0%29"/%3E%3Crect x="182" y="81" width="19" height="17" rx="4" fill="%23F2A33A" transform="rotate%282 191.5 88.5%29"/%3E%3Crect x="206" y="77" width="22" height="17" rx="4" fill="%235B2A4A" transform="rotate%2822 217.0 88.5%29"/%3E%3Crect x="234" y="83" width="18" height="15" rx="4" fill="%23C8414B" transform="rotate%28-16 243.0 87.5%29"/%3E%3Crect x="258" y="84" width="23" height="19" rx="4" fill="%239CC955" transform="rotate%28-16 269.5 89.5%29"/%3E%3Ccircle cx="269.5" cy="91.5" r="1.6" fill="%232b2b2b"/%3E%3Crect x="293" y="77" width="18" height="14" rx="4" fill="%23C8414B" transform="rotate%2821 302.0 87.0%29"/%3E%3Crect x="323" y="76" width="18" height="17" rx="4" fill="%23F7C35A" transform="rotate%28-12 332.0 88.5%29"/%3E%3C/svg%3E') center/100% 100% no-repeat, linear-gradient(#fff6ea, #f4e5d0); }
-.l-crema2 { flex: 0 0 18%; background: linear-gradient(#fffaf2, #f1e3cf); }
-.l-salsa { flex: 0 0 21%; background: linear-gradient(#d9454f, #b5303a); }
-.l-salsa::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 26px; background: radial-gradient(circle at 12% 0, #b5303a 0 10px, transparent 11px), radial-gradient(circle at 36% 0, #b5303a 0 16px, transparent 17px), radial-gradient(circle at 63% 0, #b5303a 0 8px, transparent 9px), radial-gradient(circle at 85% 0, #b5303a 0 13px, transparent 14px); }
-.cup-top { position: absolute; top: 0; width: min(310px, 72vw); display: flex; justify-content: center; gap: 6px; transform: translateY(-40%); opacity: 0; transition: opacity .8s .9s, transform .8s .9s var(--ease); }
-.anatomy.in .cup-top { opacity: 1; transform: translateY(-20%); }
-.berry { width: 46px; height: 52px; background: var(--fresa); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: relative; box-shadow: inset -6px -6px 0 rgba(0,0,0,.12); }
-.berry::before { content: ""; position: absolute; inset: 10px; background: radial-gradient(#ffe2a8 1.5px, transparent 2px) 0 0/9px 9px; }
-.leaf { width: 34px; height: 20px; background: var(--hoja); border-radius: 0 100%; align-self: flex-start; margin-top: -8px; }
-.cup-base { width: min(250px, 58vw); height: 14px; background: radial-gradient(ellipse, rgba(59,34,24,.22), transparent 70%); margin-top: 6px; }
-.layer-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; counter-reset: capa 6; }
-.layer-list li { counter-increment: capa -1; display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 20px 18px; border-radius: 18px; cursor: pointer; transition: background .35s, transform .35s var(--ease); }
-.layer-list li::before { content: "0" counter(capa); font: 500 1.8rem/1 var(--display); color: rgba(200,65,75,.4); transition: color .35s; }
+.anatomy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.cup-photo { position: relative; border-radius: 32px; overflow: hidden; aspect-ratio: 928/1152; max-width: 520px; width: 100%; justify-self: center; box-shadow: 0 40px 80px -40px rgba(59,34,24,.55); clip-path: inset(100% 0 0 0 round 32px); transition: clip-path 1.4s var(--ease); }
+.anatomy.in .cup-photo { clip-path: inset(0 0 0 0 round 32px); }
+.cup-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 1.8s var(--ease); }
+.anatomy.in .cup-photo img { transform: none; }
+.spot { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; font: 700 .85rem/1 var(--label); color: var(--fresa); background: rgba(251,245,238,.92); box-shadow: 0 6px 18px rgba(59,34,24,.3); opacity: 0; scale: .4; transition: opacity .5s, scale .5s var(--ease), background .3s, color .3s; }
+.spot::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid rgba(251,245,238,.8); animation: pulse 2.2s ease-out infinite; }
+.anatomy.in .spot { opacity: 1; scale: 1; transition-delay: calc(1s + var(--d) * .12s), calc(1s + var(--d) * .12s), 0s, 0s, 0s; }
+.spot.active { background: var(--fresa); color: #fff; scale: 1.15; }
+@keyframes pulse { from { transform: scale(.9); opacity: 1; } to { transform: scale(1.7); opacity: 0; } }
+.layer-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.layer-list li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 18px; padding: 20px 18px; border-radius: 18px; cursor: pointer; transition: background .35s, transform .35s var(--ease); }
+.layer-list li::before { content: "0" attr(data-n); font: 500 1.8rem/1 var(--display); color: rgba(200,65,75,.4); transition: color .35s; }
 .layer-list li.active, .layer-list li:hover { background: var(--merengue); transform: translateX(8px); }
 .layer-list li.active::before, .layer-list li:hover::before { color: var(--fresa); }
 .layer-list h3 { font-size: 1.45rem; margin-bottom: 4px; }
 .layer-list p { color: #6a4b3e; font-size: 1rem; }
-@media (max-width: 900px) { .anatomy { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .anatomy { grid-template-columns: minmax(0, 1fr); } .layer-list li:hover, .layer-list li.active { transform: none; } }
 
 /* Menú */
 .menu-sec { background: var(--choco); color: var(--merengue); overflow: hidden; }
 .menu-sec .sec-head p { color: rgba(246,235,221,.72); }
 .menu-sec .sec-head .eyebrow { color: var(--mango); }
 .menu-sec .sec-head h2 .script { color: var(--mango); }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; perspective: 1200px; }
-.card { position: relative; border-radius: 26px; overflow: hidden; background: #2f1a11; display: flex; flex-direction: column; transform-style: preserve-3d; transition: transform .6s var(--ease), box-shadow .6s; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
-.card:nth-child(2) { margin-top: 64px; }
-.card figure { margin: 0; aspect-ratio: 4/5; overflow: hidden; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.card { position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 26px; overflow: hidden; isolation: isolate; background: #2f1a11; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6), inset 0 0 0 1px rgba(246,235,221,.06); transition: transform .5s var(--ease), box-shadow .5s; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 40px 70px -30px rgba(0,0,0,.75), inset 0 0 0 1px rgba(242,163,58,.35); }
+.card figure { flex: none; aspect-ratio: 4/5; overflow: hidden; }
 .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.card:hover img { transform: scale(1.07); }
-.card .info { position: relative; padding: 24px 26px 28px; display: grid; gap: 8px; flex: 1; align-content: start; }
+.card:hover img { transform: scale(1.06); }
+.card .info { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 24px 26px 28px; }
 .card .info::before { content: ""; position: absolute; left: 26px; right: 26px; top: 0; height: 1px; background: linear-gradient(90deg, var(--mango), transparent); }
 .card .num { font: 600 .72rem/1 var(--label); letter-spacing: .24em; color: var(--mango); }
-.card h3 { font-size: 1.9rem; }
+.card h3 { font-size: clamp(1.6rem, 2.2vw, 1.9rem); }
 .card h3 .script { color: var(--mango); font-size: 1.3em; }
 .card p { color: rgba(246,235,221,.78); font-size: .98rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
 .tags span { font: 600 .66rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; background: rgba(246,235,221,.12); }
-@media (max-width: 900px) { .cards { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } .card:nth-child(2) { margin-top: 0; } }
+@media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
 /* Manifiesto */
 .manifesto { background: var(--merengue); text-align: center; overflow: hidden; }
@@ -195,53 +181,46 @@ section { position: relative; }
 .manifesto .word.lit { opacity: 1; }
 .manifesto .sign { margin-top: 36px; font: italic 500 1.35rem/1.4 var(--italic); color: var(--cacao); }
 
-/* Marca */
-.brand-sec { background: var(--merengue-2); }
-.brand-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
-.tile { border-radius: 26px; padding: clamp(24px, 4vw, 44px); display: grid; place-items: center; position: relative; overflow: hidden; min-height: 260px; transition: transform .6s var(--ease); }
-.tile:hover { transform: translateY(-6px); }
-.tile img { transition: transform .9s var(--ease); }
-.tile:hover img { transform: rotate(-8deg) scale(1.05); }
-.tile figcaption { position: absolute; left: 22px; bottom: 18px; font: 600 .68rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; opacity: .7; }
-.t-logo { grid-column: span 7; background: #fff; box-shadow: inset 0 0 0 1px #eadbc9; }
-.t-logo img { width: min(520px, 100%); }
-.t-logo:hover img { transform: scale(1.03); }
-.t-choco { grid-column: span 5; background: var(--choco); color: var(--merengue); }
-.t-choco img, .t-kraft img { width: min(240px, 70%); }
-.t-kraft { grid-column: span 4; background: var(--kraft) linear-gradient(135deg, rgba(255,255,255,.12), rgba(0,0,0,.1)); color: var(--choco); }
-.t-sello { grid-column: span 3; background: var(--fresa); color: var(--merengue); }
-.t-sello img { width: min(170px, 70%); }
-.t-etiqueta { grid-column: span 5; background: var(--hoja); color: var(--merengue); }
-.t-etiqueta img { width: min(360px, 90%); border-radius: 14px; box-shadow: 0 20px 40px -18px rgba(0,0,0,.45); }
-.t-etiqueta:hover img { transform: rotate(-3deg) scale(1.04); }
-.concept { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: clamp(56px, 8vw, 90px); border-top: 1px solid #e2cdbb; padding-top: 40px; }
-.concept > div { display: grid; gap: 10px; align-content: start; }
-.concept .big { font: 600 2rem/1.1 var(--display); }
-.concept .big .script { color: var(--fresa); font-size: 1.35em; }
-.concept p { color: #6a4b3e; }
-.palette { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
-.palette span { width: 40px; height: 40px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); position: relative; transition: transform .3s var(--ease); }
-.palette span:hover { transform: scale(1.18); }
+/* Pedidos: estilo app (oscuro, neón, vidrio) */
+.order { --ink: #0B0807; --wa: #25D366; background: var(--ink); color: #F5EEE6; overflow: hidden; isolation: isolate; padding: clamp(100px, 13vw, 170px) 0; }
+.order::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); }
+.blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .55; animation: drift 14s ease-in-out infinite alternate; }
+.blob.b1 { width: 520px; height: 520px; background: var(--fresa); left: -160px; top: -120px; }
+.blob.b2 { width: 460px; height: 460px; background: var(--mango); right: -140px; bottom: -160px; animation-delay: -5s; opacity: .4; }
+.blob.b3 { width: 300px; height: 300px; background: var(--wa); right: 30%; top: 30%; opacity: .16; animation-delay: -9s; }
+@keyframes drift { to { transform: translate(60px, 40px) scale(1.12); } }
+.order-head { display: grid; justify-items: center; text-align: center; gap: 22px; margin-bottom: clamp(48px, 7vw, 72px); }
+.live { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); font: 700 .72rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; backdrop-filter: blur(10px); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--wa); box-shadow: 0 0 0 0 rgba(37,211,102,.7); animation: live 1.8s infinite; }
+@keyframes live { 70% { box-shadow: 0 0 0 10px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+.order h2 { font: 900 clamp(2.8rem, 8.5vw, 7.2rem)/.92 var(--label); letter-spacing: -.035em; text-transform: uppercase; }
+.order h2 .grad { background: linear-gradient(95deg, var(--mango), var(--fresa) 55%, #ff7aa2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.order-head p { max-width: 46ch; color: rgba(245,238,230,.66); font-size: 1.12rem; }
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(130px, auto); gap: 16px; }
+.glass { position: relative; border-radius: 28px; padding: 28px; background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); overflow: hidden; display: flex; flex-direction: column; gap: 10px; min-width: 0; transition: transform .5s var(--ease), box-shadow .5s; }
+.glass:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
+.b-photo { grid-column: span 5; grid-row: span 3; padding: 0; min-height: 420px; }
+.b-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.b-photo .chip { position: absolute; left: 18px; bottom: 18px; padding: 10px 14px; border-radius: 14px; background: rgba(11,8,7,.55); backdrop-filter: blur(12px); font: 700 .74rem/1.2 var(--label); letter-spacing: .12em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
+.b-step { grid-column: span 7; flex-direction: row; align-items: center; gap: 22px; }
+.b-step .n { flex: none; width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; font: 900 1.4rem/1 var(--label); background: rgba(255,255,255,.07); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); color: var(--mango); }
+.b-step h3 { font: 800 1.3rem/1.15 var(--label); letter-spacing: -.01em; }
+.b-step p { color: rgba(245,238,230,.62); font-size: .98rem; }
+.b-cta { grid-column: span 12; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(26px, 4vw, 40px); background: linear-gradient(120deg, rgba(37,211,102,.16), rgba(255,255,255,.03) 60%); box-shadow: inset 0 0 0 1px rgba(37,211,102,.35); }
+.b-cta .k { font: 700 .72rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; color: rgba(245,238,230,.6); }
+.b-cta .tel { font: 900 clamp(1.8rem, 4.4vw, 3rem)/1.05 var(--label); letter-spacing: -.02em; margin-top: 8px; }
+.wa-btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px; border-radius: 999px; background: var(--wa); color: #06210f; text-decoration: none; font: 800 .95rem/1 var(--label); letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset, 0 18px 50px -12px rgba(37,211,102,.75); transition: transform .35s var(--ease), box-shadow .35s; }
+.wa-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 0 1px rgba(255,255,255,.3) inset, 0 24px 60px -10px rgba(37,211,102,.95); }
+.wa-btn svg { width: 24px; height: 24px; }
 @media (max-width: 900px) {
-  .brand-grid > * { grid-column: span 12; }
-  .concept { grid-template-columns: 1fr; }
+  .b-photo { grid-column: span 12; grid-row: auto; aspect-ratio: 4/3; }
+  .b-step { grid-column: span 12; }
+  .b-cta { flex-direction: column; align-items: flex-start; }
 }
-@media (min-width: 600px) and (max-width: 900px) {
-  .t-choco, .t-kraft, .t-sello, .t-etiqueta { grid-column: span 6; }
-}
-
-/* Pedidos */
-.order { background: var(--choco-2); color: var(--merengue); overflow: hidden; isolation: isolate; }
-.order .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
-.order h2 { font-size: clamp(2.8rem, 7vw, 6rem); }
-.order h2 .script { color: var(--fresa); font-size: 1.25em; }
-.order p { font: italic 500 1.4rem/1.45 var(--italic); color: rgba(246,235,221,.8); margin: 22px 0 34px; max-width: 36ch; }
-.order .note { font: 600 .74rem/1.5 var(--label); letter-spacing: .16em; text-transform: uppercase; color: var(--mango); }
-.order .photo { position: relative; justify-self: center; width: min(400px, 100%); }
-.order .photo img.main { border-radius: 50%; aspect-ratio: 1; object-fit: cover; box-shadow: 0 0 0 10px rgba(246,235,221,.06), 0 0 0 22px rgba(246,235,221,.04), 0 40px 80px -30px #000; }
-.order .photo img.seal { position: absolute; width: 34%; right: -4%; top: -2%; animation: spin 24s linear infinite reverse; filter: drop-shadow(0 12px 20px rgba(0,0,0,.5)); }
-.order .big-bg { position: absolute; z-index: -1; right: -6vw; bottom: -6vw; font: 400 clamp(10rem, 30vw, 26rem)/1 var(--script); color: rgba(246,235,221,.035); pointer-events: none; }
-@media (max-width: 900px) { .order .wrap { grid-template-columns: 1fr; } }
+.wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 70; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; background: #25D366; color: #fff; box-shadow: 0 14px 34px -8px rgba(37,211,102,.7); transition: transform .35s var(--ease); }
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 32px; height: 32px; }
+.wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: pulse 2.4s ease-out infinite; }
 
 footer { background: var(--choco); color: rgba(246,235,221,.7); padding: 56px 0 40px; font-size: .92rem; }
 footer .wrap { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
@@ -254,7 +233,8 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .reveal, .layer { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; }
+  .cup-photo { clip-path: none; } .spot { opacity: 1; scale: 1; }
   .manifesto .word { opacity: 1; }
 }
 </style>
@@ -271,7 +251,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     <ul>
       <li><a href="#capas">El pecado</a></li>
       <li><a href="#menu">Menú</a></li>
-      <li><a href="#marca">La marca</a></li>
+      <li><a href="#pedidos">Pedidos</a></li>
     </ul>
     <a class="btn btn-fresa" href="#pedidos">Pedir</a>
   </div>
@@ -297,10 +277,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     </div>
     <div class="stage">
       <div class="arch">
-        <video id="heroVideo" src="assets/video/postre.mp4" poster="assets/video/poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Video del postre Pecatté con base de galleta, crema, fruta y salsa de fresa"></video>
-        <button class="sound" id="soundBtn" type="button" aria-label="Activar sonido" aria-pressed="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="x" d="m22 9-6 6M16 9l6 6"/></svg>
-        </button>
+        <video id="heroVideo" src="assets/video/postre.mp4" poster="assets/video/poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Video del postre Pecatté con base de galleta, crema, fruta y salsa de fresa"></video>
       </div>
       <div class="badge" aria-hidden="true">
         <svg class="ring" viewBox="0 0 200 200">
@@ -326,26 +303,23 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     <div class="sec-head reveal">
       <p class="eyebrow">Anatomía de un pecado</p>
       <h2>Cinco capas, <span class="script">cero culpa</span></h2>
-      <p>Así se arma nuestro Pecado de Galleta, de abajo hacia arriba. Toca una capa para conocerla.</p>
+      <p>Así se arma nuestro Pecado Clásico, de abajo hacia arriba. Toca un punto o una capa para conocerla.</p>
     </div>
     <div class="anatomy" id="anatomy">
-      <div class="cup-wrap">
-        <div class="cup-top" aria-hidden="true"><span class="leaf"></span><span class="berry"></span><span class="berry"></span></div>
-        <div class="cup" id="cup" aria-hidden="true">
-          <div class="layer l-galleta" data-i="0"></div>
-          <div class="layer l-crema" data-i="1"></div>
-          <div class="layer l-fruta" data-i="2"></div>
-          <div class="layer l-crema2" data-i="3"></div>
-          <div class="layer l-salsa" data-i="4"></div>
-        </div>
-        <div class="cup-base"></div>
-      </div>
+      <figure class="cup-photo" id="cup">
+        <img src="assets/img/anatomia.webp" alt="Vaso transparente con capas de fruta picada y crema de leche, coronado con crema, fruta y menta" loading="lazy" width="928" height="1152">
+        <button class="spot" type="button" data-i="4" style="--x:58%;--y:30%;--d:4" aria-label="Capa 5: corona de fruta y menta">5</button>
+        <button class="spot" type="button" data-i="3" style="--x:71%;--y:42%;--d:3" aria-label="Capa 4: copete de crema">4</button>
+        <button class="spot" type="button" data-i="2" style="--x:66%;--y:53%;--d:2" aria-label="Capa 3: fruta picada">3</button>
+        <button class="spot" type="button" data-i="1" style="--x:64%;--y:72%;--d:1" aria-label="Capa 2: crema de leche">2</button>
+        <button class="spot" type="button" data-i="0" style="--x:61%;--y:81%;--d:0" aria-label="Capa 1: base de fruta">1</button>
+      </figure>
       <ol class="layer-list" id="layerList">
-        <li data-i="4"><div><h3>Salsa de fresa</h3><p>Brillante y espesa. Cae sobre la crema y se cuela entre las capas.</p></div></li>
-        <li data-i="3"><div><h3>Segunda nube de crema</h3><p>Sella la fruta y prepara el terreno para la salsa.</p></div></li>
-        <li data-i="2"><div><h3>Fruta picada</h3><p>Fresa, mango, kiwi y uva en cubos. Color y frescura en cada cucharada.</p></div></li>
-        <li data-i="1"><div><h3>Crema de leche</h3><p>Batida hasta quedar suave y ligera. Es el alma del vaso.</p></div></li>
-        <li data-i="0"><div><h3>Base de galleta</h3><p>Galleta triturada y compacta. El crujiente que lo sostiene todo.</p></div></li>
+        <li data-i="4" data-n="5"><div><h3>Corona de fruta y menta</h3><p>Fresa, mango, kiwi y uva recién picados, con una hoja de menta fresca.</p></div></li>
+        <li data-i="3" data-n="4"><div><h3>Copete de crema</h3><p>Un remolino generoso de crema de leche batida que sella el vaso.</p></div></li>
+        <li data-i="2" data-n="3"><div><h3>Fruta picada</h3><p>Cubos de colores que se ven a través del vaso. Frescura en cada cucharada.</p></div></li>
+        <li data-i="1" data-n="2"><div><h3>Crema de leche</h3><p>Suave y ligera, se intercala con la fruta capa tras capa.</p></div></li>
+        <li data-i="0" data-n="1"><div><h3>Base de fruta</h3><p>El fondo también es fruta, para que la última cucharada sea igual de buena.</p></div></li>
       </ol>
     </div>
   </div>
@@ -359,7 +333,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
       <p>Tres formas de darse un gusto, todas servidas en vaso y listas para llevar.</p>
     </div>
     <div class="cards">
-      <article class="card reveal" data-tilt>
+      <article class="card reveal">
         <figure><img src="assets/img/vaso-frutas.webp" alt="Vaso Pecatté lleno de fresa, mango, kiwi y banano bañados en crema" loading="lazy" width="1200" height="1200"></figure>
         <div class="info">
           <span class="num">01 · El más fresco</span>
@@ -368,7 +342,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
           <div class="tags"><span>Fresa</span><span>Mango</span><span>Kiwi</span><span>Banano</span></div>
         </div>
       </article>
-      <article class="card reveal" data-tilt>
+      <article class="card reveal">
         <figure><img src="assets/img/postre-crema-fruta.webp" alt="Vaso con capas de crema y fruta picada, coronado con crema, fruta y menta" loading="lazy" width="928" height="1152"></figure>
         <div class="info">
           <span class="num">02 · El clásico</span>
@@ -377,7 +351,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
           <div class="tags"><span>Crema</span><span>Fruta</span><span>Menta</span></div>
         </div>
       </article>
-      <article class="card reveal" data-tilt>
+      <article class="card reveal">
         <figure><img src="assets/img/postre-galleta-salsa.webp" alt="Vaso con base de galleta, crema, fruta y salsa de fresa por encima" loading="lazy" width="928" height="1152"></figure>
         <div class="info">
           <span class="num">03 · El más tentador</span>
@@ -397,64 +371,31 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
   </div>
 </section>
 
-<section class="sec brand-sec" id="marca">
+<section class="order" id="pedidos">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">La marca</p>
-      <h2>Un sello que se <span class="script">antoja</span></h2>
-      <p>Cada empaque tiene su versión del logo: sticker para la tapa, sello para cerrar la caja y etiqueta para el vaso. La misma identidad en todos los tamaños.</p>
+    <div class="order-head reveal">
+      <span class="live"><i></i> Pedidos abiertos</span>
+      <h2>Tu antojo,<br><span class="grad">a un mensaje</span></h2>
+      <p>Para un antojo, una reunión o un regalo. Escríbenos por WhatsApp y armamos tu pedido.</p>
     </div>
-    <div class="brand-grid">
-      <figure class="tile t-logo reveal"><img src="assets/logos/01-logo-principal.svg" alt="Logo principal Pecatté" loading="lazy"><figcaption>Logo principal</figcaption></figure>
-      <figure class="tile t-choco reveal"><img src="assets/logos/05-sticker-circular-6cm-chocolate.svg" alt="Sticker circular chocolate Pecatté" loading="lazy"><figcaption>Sticker chocolate · 6 cm</figcaption></figure>
-      <figure class="tile t-kraft reveal"><img src="assets/logos/04-sticker-circular-6cm.svg" alt="Sticker circular crema Pecatté" loading="lazy"><figcaption>Sticker crema · 6 cm</figcaption></figure>
-      <figure class="tile t-sello reveal"><img src="assets/logos/06-sello-monograma-4cm.svg" alt="Sello monograma Pé" loading="lazy"><figcaption>Sello · 4 cm</figcaption></figure>
-      <figure class="tile t-etiqueta reveal"><img src="assets/logos/07-etiqueta-8x4cm.svg" alt="Etiqueta rectangular Pecatté" loading="lazy"><figcaption>Etiqueta · 8 × 4 cm</figcaption></figure>
-    </div>
-    <div class="concept">
-      <div class="reveal">
-        <span class="big">PE<span class="script">A</span>TT<span class="script">É</span></span>
-        <p>Letras romanas que transmiten oficio. La A y la É escapan en cursiva: la A del «pecado» y una firma al final.</p>
-      </div>
-      <div class="reveal">
-        <span class="big">Fruta como <span class="script">corona</span></span>
-        <p>Una enredadera con fresa y mango corona el nombre. Abajo, hojas de cacao y granos de café cierran con discreción.</p>
-      </div>
-      <div class="reveal">
-        <span class="big">Paleta de <span class="script">pastelería</span></span>
-        <div class="palette" aria-label="Paleta de color">
-          <span style="background:#3B2218" title="Chocolate"></span>
-          <span style="background:#6B3F2C" title="Cacao"></span>
-          <span style="background:#F6EBDD" title="Merengue"></span>
-          <span style="background:#C8414B" title="Fresa"></span>
-          <span style="background:#F2A33A" title="Mango"></span>
-          <span style="background:#5E7D3E" title="Hoja"></span>
-        </div>
+    <div class="bento">
+      <figure class="glass b-photo reveal">
+        <img src="assets/img/vaso-frutas.webp" alt="Postre Pecatté de fruta con crema" loading="lazy">
+        <figcaption class="chip">Pecado Tropical</figcaption>
+      </figure>
+      <div class="glass b-step reveal"><span class="n">01</span><div><h3>Elige tu pecado</h3><p>Tropical, Clásico o de Galleta. O pídelo como más te guste.</p></div></div>
+      <div class="glass b-step reveal"><span class="n">02</span><div><h3>Escríbenos por WhatsApp</h3><p>Dinos cuántos vasos quieres y para cuándo.</p></div></div>
+      <div class="glass b-step reveal"><span class="n">03</span><div><h3>Lo preparamos a mano</h3><p>Capa por capa, con fruta picada y crema de leche.</p></div></div>
+      <div class="glass b-cta reveal">
+        <div><p class="k">WhatsApp de pedidos</p><p class="tel" id="waTel"></p></div>
+        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg> Pedir por WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec order" id="pedidos">
-  <div class="big-bg" aria-hidden="true">Pé</div>
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow note">Pedidos por encargo</p>
-      <h2>¿Te das el <span class="script">gusto</span>?</h2>
-      <p>Para un antojo, una reunión o un regalo. Escríbenos y armamos tu pedido.</p>
-      <div class="actions" style="display:flex;flex-wrap:wrap;gap:14px">
-        <a class="btn btn-fresa" id="waBtn" href="#pedidos" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
-          Pedir por WhatsApp</a>
-        <a class="btn btn-ghost" href="#menu">Ver el menú</a>
-      </div>
-    </div>
-    <div class="photo reveal">
-      <img class="main" src="assets/img/vaso-frutas.webp" alt="Postre Pecatté de fruta con crema" loading="lazy">
-      <img class="seal" src="assets/logos/05-sticker-circular-6cm-chocolate.svg" alt="">
-    </div>
-  </div>
-</section>
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
 
 <footer>
   <div class="wrap">
@@ -467,17 +408,17 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
 </footer>
 
 <script>
-// Número de WhatsApp con código de país, solo dígitos (ej. "573001234567"). Vacío = oculta el botón.
-const WHATSAPP = "";
+// Número de WhatsApp: código de país + número, solo dígitos.
+const WHATSAPP = "573203703184";
 const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
 
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const wa = document.getElementById("waBtn");
-  if (WHATSAPP) wa.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`;
-  else wa.remove();
+  const waUrl = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`;
+  document.querySelectorAll("#waBtn, #waFloat").forEach(a => a.href = waUrl);
+  document.getElementById("waTel").textContent = "+" + WHATSAPP.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
 
   // Barra de progreso y nav sólida
   const nav = document.querySelector(".nav"), bar = document.querySelector(".progress");
@@ -494,16 +435,11 @@ const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
   }), { threshold: .18 });
   document.querySelectorAll(".reveal, #anatomy").forEach(el => io.observe(el));
 
-  // Capas del vaso: sincroniza vaso y lista
-  const layers = [...document.querySelectorAll("#cup .layer")];
+  // Capas: sincroniza puntos de la foto y lista
+  const spots = [...document.querySelectorAll("#cup .spot")];
   const items = [...document.querySelectorAll("#layerList li")];
-  const cup = document.getElementById("cup");
-  const pick = i => {
-    cup.classList.toggle("picking", i !== null);
-    layers.forEach(l => l.classList.toggle("active", +l.dataset.i === i));
-    items.forEach(l => l.classList.toggle("active", +l.dataset.i === i));
-  };
-  [...layers, ...items].forEach(el => {
+  const pick = i => [...spots, ...items].forEach(el => el.classList.toggle("active", +el.dataset.i === i));
+  [...spots, ...items].forEach(el => {
     el.addEventListener("mouseenter", () => pick(+el.dataset.i));
     el.addEventListener("click", () => pick(+el.dataset.i));
   });
@@ -530,27 +466,8 @@ const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
     words.forEach((w, i) => w.classList.toggle("lit", i < p * words.length + .5));
   }
 
-  // Inclinación 3D de las tarjetas
-  if (!reduce && matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll("[data-tilt]").forEach(c => {
-      c.addEventListener("pointermove", e => {
-        const r = c.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-        c.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateZ(0)`;
-      });
-      c.addEventListener("pointerleave", () => c.style.transform = "");
-    });
-  }
-
-  // Sonido del video
-  const v = document.getElementById("heroVideo"), sb = document.getElementById("soundBtn");
-  sb.addEventListener("click", () => {
-    v.muted = !v.muted;
-    sb.setAttribute("aria-pressed", String(!v.muted));
-    sb.setAttribute("aria-label", v.muted ? "Activar sonido" : "Silenciar");
-    sb.querySelector(".x").style.display = v.muted ? "" : "none";
-    if (v.paused) v.play();
-  });
+  // Video en bucle (versión ida y vuelta, sin corte visible)
+  const v = document.getElementById("heroVideo");
   if (reduce) { v.removeAttribute("autoplay"); v.pause(); }
 
   addEventListener("scroll", onScroll, { passive: true });

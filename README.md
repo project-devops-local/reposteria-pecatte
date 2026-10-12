@@ -6,7 +6,7 @@ Sitio estático (un solo `index.html` + carpeta `assets/`) publicado con GitHub 
 
 ## Editar
 
-- **WhatsApp de pedidos:** al final de `index.html`, cambia `const WHATSAPP = "";` por tu número con código de país, solo dígitos (ej. `"573001234567"`). Si queda vacío, el botón no se muestra.
+- **WhatsApp de pedidos:** al final de `index.html`, en `const WHATSAPP`, con código de país y solo dígitos (ahora `573203703184`).
 - **Imágenes:** `assets/img/` · **Logos:** `assets/logos/` · **Video:** `assets/video/`.
 
 ## Ver en local
