@@ -35,6 +35,9 @@
   --ease: cubic-bezier(.2, .8, .2, 1);
 }
 * { box-sizing: border-box; }
+html, body { cursor: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 32 32%22%3E%3Cg transform=%22rotate%28140 16 16%29%22%3E%3Cpath d=%22M16 30C6 22 4 12 9 8c3-2 5-1 7 0 2-1 4-2 7 0 5 4 3 14-7 22z%22 fill=%22%23D7303C%22 stroke=%22%23fff%22 stroke-width=%221.6%22 stroke-linejoin=%22round%22/%3E%3Cg fill=%22%23FFE08A%22%3E%3Cellipse cx=%2211%22 cy=%2213%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2216%22 cy=%2212%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2221%22 cy=%2213%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2213%22 cy=%2218%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2219%22 cy=%2218%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2216%22 cy=%2223%22 rx=%22.9%22 ry=%221.3%22/%3E%3C/g%3E%3Cpath d=%22M16 9 11 5l3 .5L16 2l2 3.5 3-.5z%22 fill=%22%234E8A2E%22 stroke=%22%23fff%22 stroke-width=%221%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E") 7 5, auto; }
+a, button, label, input[type="radio"] + span, .card, .spot, .layer-list li, [role="button"] { cursor: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 32 32%22%3E%3Cg transform=%22rotate%28140 16 16%29%22%3E%3Cpath d=%22M16 30C6 22 4 12 9 8c3-2 5-1 7 0 2-1 4-2 7 0 5 4 3 14-7 22z%22 fill=%22%23D7303C%22 stroke=%22%23fff%22 stroke-width=%221.6%22 stroke-linejoin=%22round%22/%3E%3Cg fill=%22%23FFE08A%22%3E%3Cellipse cx=%2211%22 cy=%2213%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2216%22 cy=%2212%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2221%22 cy=%2213%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2213%22 cy=%2218%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2219%22 cy=%2218%22 rx=%22.9%22 ry=%221.3%22/%3E%3Cellipse cx=%2216%22 cy=%2223%22 rx=%22.9%22 ry=%221.3%22/%3E%3C/g%3E%3Cpath d=%22M16 9 11 5l3 .5L16 2l2 3.5 3-.5z%22 fill=%22%234E8A2E%22 stroke=%22%23fff%22 stroke-width=%221%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E") 7 5, pointer; }
+input[type="text"], textarea { cursor: text; }
 html { scroll-behavior: smooth; overflow-x: clip; }
 body { margin: 0; background: var(--merengue-2); color: var(--choco); font: 400 1.0625rem/1.65 var(--body); overflow-x: hidden; }
 img, video, svg { display: block; max-width: 100%; }
@@ -157,19 +160,25 @@ section { position: relative; }
 .menu-sec .sec-head .eyebrow { color: var(--mango); }
 .menu-sec .sec-head h2 .script { color: var(--mango); }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
-.card { position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 26px; overflow: hidden; isolation: isolate; background: #2f1a11; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6), inset 0 0 0 1px rgba(246,235,221,.06); transition: transform .5s var(--ease), box-shadow .5s; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 40px 70px -30px rgba(0,0,0,.75), inset 0 0 0 1px rgba(242,163,58,.35); }
-.card figure { flex: none; aspect-ratio: 4/5; overflow: hidden; }
-.card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.card:hover img { transform: scale(1.06); }
-.card .info { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 24px 26px 28px; }
-.card .info::before { content: ""; position: absolute; left: 26px; right: 26px; top: 0; height: 1px; background: linear-gradient(90deg, var(--mango), transparent); }
-.card .num { font: 600 .72rem/1 var(--label); letter-spacing: .24em; color: var(--mango); }
-.card h3 { font-size: clamp(1.6rem, 2.2vw, 1.9rem); }
+.card { --mx: 50%; --my: 50%; position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 26px; overflow: hidden; isolation: isolate; background: #fff; color: var(--choco); box-shadow: 0 30px 60px -30px rgba(0,0,0,.65); transition: transform .5s var(--ease), box-shadow .5s; }
+.card:hover { transform: translateY(-10px); box-shadow: 0 45px 80px -30px rgba(0,0,0,.8), 0 0 0 3px var(--mango); }
+.card figure { position: relative; flex: none; aspect-ratio: 4/5; overflow: hidden; margin: 10px 10px 0; border-radius: 18px; }
+.card figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card .img-a { transition: transform 1.2s var(--ease), filter .8s; }
+.card .img-b { clip-path: circle(0% at var(--mx) var(--my)); transform: scale(1.15); transition: clip-path .9s var(--ease), transform 1.4s var(--ease); }
+.card:hover .img-a, .card.flip .img-a { transform: scale(1.1); filter: blur(2px) brightness(.85); }
+.card:hover .img-b, .card.flip .img-b { clip-path: circle(150% at var(--mx) var(--my)); transform: none; }
+.card .angle { position: absolute; right: 12px; top: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--choco); font: 700 .62rem/1 var(--label); letter-spacing: .16em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background .4s, color .4s; }
+.card .angle svg { width: 12px; height: 12px; transition: transform .8s var(--ease); }
+.card:hover .angle, .card.flip .angle { background: var(--mango); color: var(--choco); }
+.card:hover .angle svg, .card.flip .angle svg { transform: rotate(180deg); }
+.card .info { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; }
+.card .num { font: 700 .72rem/1 var(--label); letter-spacing: .24em; text-transform: uppercase; color: #D98516; }
+.card h3 { font-size: clamp(1.6rem, 2.2vw, 1.95rem); color: var(--choco); }
 .card h3 .script { color: var(--mango); font-size: 1.3em; }
-.card p { color: rgba(246,235,221,.78); font-size: .98rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
-.tags span { font: 600 .66rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; background: rgba(246,235,221,.12); }
+.card p { color: #6a4b3e; font-size: .98rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.tags span { font: 700 .64rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; padding: 8px 11px; border-radius: 999px; background: #FDF1DC; color: var(--choco); box-shadow: inset 0 0 0 1px rgba(242,163,58,.45); }
 @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
@@ -181,44 +190,95 @@ section { position: relative; }
 .manifesto .word.lit { opacity: 1; }
 .manifesto .sign { margin-top: 36px; font: italic 500 1.35rem/1.4 var(--italic); color: var(--cacao); }
 
-/* Pedidos: estilo app (oscuro, neón, vidrio) */
-.order { --ink: #0B0807; --wa: #25D366; background: var(--ink); color: #F5EEE6; overflow: hidden; isolation: isolate; padding: clamp(100px, 13vw, 170px) 0; }
+/* Pedidos: arma tu pedido y míralo en el chat */
+.order { --ink: #0B0807; --wa: #25D366; background: var(--ink); color: #F5EEE6; overflow: hidden; isolation: isolate; padding: clamp(100px, 12vw, 160px) 0; }
 .order::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); }
 .blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .55; animation: drift 14s ease-in-out infinite alternate; }
 .blob.b1 { width: 520px; height: 520px; background: var(--fresa); left: -160px; top: -120px; }
 .blob.b2 { width: 460px; height: 460px; background: var(--mango); right: -140px; bottom: -160px; animation-delay: -5s; opacity: .4; }
-.blob.b3 { width: 300px; height: 300px; background: var(--wa); right: 30%; top: 30%; opacity: .16; animation-delay: -9s; }
+.blob.b3 { width: 340px; height: 340px; background: var(--wa); right: 18%; top: 34%; opacity: .18; animation-delay: -9s; }
 @keyframes drift { to { transform: translate(60px, 40px) scale(1.12); } }
-.order-head { display: grid; justify-items: center; text-align: center; gap: 22px; margin-bottom: clamp(48px, 7vw, 72px); }
+.order-head { display: grid; justify-items: center; text-align: center; gap: 22px; margin-bottom: clamp(44px, 6vw, 64px); }
 .live { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); font: 700 .72rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; backdrop-filter: blur(10px); }
-.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--wa); box-shadow: 0 0 0 0 rgba(37,211,102,.7); animation: live 1.8s infinite; }
-@keyframes live { 70% { box-shadow: 0 0 0 10px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
-.order h2 { font: 900 clamp(2.8rem, 8.5vw, 7.2rem)/.92 var(--label); letter-spacing: -.035em; text-transform: uppercase; }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--wa); animation: live 1.8s infinite; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.7); } 70% { box-shadow: 0 0 0 10px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+.order h2 { font: 900 clamp(2.6rem, 8vw, 6.6rem)/.92 var(--label); letter-spacing: -.035em; text-transform: uppercase; }
 .order h2 .grad { background: linear-gradient(95deg, var(--mango), var(--fresa) 55%, #ff7aa2); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.order-head p { max-width: 46ch; color: rgba(245,238,230,.66); font-size: 1.12rem; }
-.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(130px, auto); gap: 16px; }
-.glass { position: relative; border-radius: 28px; padding: 28px; background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); overflow: hidden; display: flex; flex-direction: column; gap: 10px; min-width: 0; transition: transform .5s var(--ease), box-shadow .5s; }
-.glass:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
-.b-photo { grid-column: span 5; grid-row: span 3; padding: 0; min-height: 420px; }
-.b-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-.b-photo .chip { position: absolute; left: 18px; bottom: 18px; padding: 10px 14px; border-radius: 14px; background: rgba(11,8,7,.55); backdrop-filter: blur(12px); font: 700 .74rem/1.2 var(--label); letter-spacing: .12em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
-.b-step { grid-column: span 7; flex-direction: row; align-items: center; gap: 22px; }
-.b-step .n { flex: none; width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; font: 900 1.4rem/1 var(--label); background: rgba(255,255,255,.07); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); color: var(--mango); }
-.b-step h3 { font: 800 1.3rem/1.15 var(--label); letter-spacing: -.01em; }
-.b-step p { color: rgba(245,238,230,.62); font-size: .98rem; }
-.b-cta { grid-column: span 12; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(26px, 4vw, 40px); background: linear-gradient(120deg, rgba(37,211,102,.16), rgba(255,255,255,.03) 60%); box-shadow: inset 0 0 0 1px rgba(37,211,102,.35); }
-.b-cta .k { font: 700 .72rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; color: rgba(245,238,230,.6); }
-.b-cta .tel { font: 900 clamp(1.8rem, 4.4vw, 3rem)/1.05 var(--label); letter-spacing: -.02em; margin-top: 8px; }
-.wa-btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px; border-radius: 999px; background: var(--wa); color: #06210f; text-decoration: none; font: 800 .95rem/1 var(--label); letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset, 0 18px 50px -12px rgba(37,211,102,.75); transition: transform .35s var(--ease), box-shadow .35s; }
+.order-head p { max-width: 50ch; color: rgba(245,238,230,.66); font-size: 1.12rem; }
+.order-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.glass { position: relative; border-radius: 28px; background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); min-width: 0; }
+.builder { padding: clamp(22px, 3vw, 34px); display: grid; gap: 26px; }
+.step-t { display: flex; align-items: center; gap: 12px; font: 800 .78rem/1 var(--label); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,238,230,.7); margin-bottom: 14px; }
+.step-t b { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: var(--mango); color: var(--ink); font-size: .8rem; letter-spacing: 0; }
+.picks { display: grid; gap: 10px; }
+.pick { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 10px 12px 10px 10px; border-radius: 20px; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); transition: background .3s, box-shadow .3s; }
+.pick.on { background: rgba(242,163,58,.1); box-shadow: inset 0 0 0 1.5px var(--mango); }
+.pick img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; }
+.pick h4 { margin: 0; font: 600 1.2rem/1.1 var(--display); }
+.pick h4 .script { color: var(--mango); font-size: 1.3em; }
+.pick small { color: rgba(245,238,230,.55); font-size: .86rem; }
+.qty { display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(0,0,0,.35); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+.qty button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(255,255,255,.08); color: #fff; font: 700 1.2rem/1 var(--label); transition: background .25s, transform .2s; }
+.qty button:hover { background: var(--mango); color: var(--ink); }
+.qty button:active { transform: scale(.9); }
+.qty output { min-width: 28px; text-align: center; font: 800 1.05rem/1 var(--label); }
+.when { display: flex; flex-wrap: wrap; gap: 8px; }
+.when label { position: relative; }
+.when input { position: absolute; opacity: 0; pointer-events: none; }
+.when span { display: inline-block; padding: 12px 18px; border-radius: 999px; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); font: 700 .8rem/1 var(--label); letter-spacing: .06em; transition: background .25s, color .25s, box-shadow .25s; }
+.when input:checked + span { background: var(--mango); color: var(--ink); box-shadow: none; }
+.when input:focus-visible + span, .qty button:focus-visible, .note:focus-visible { outline: 2px solid var(--mango); outline-offset: 2px; }
+.note { width: 100%; padding: 14px 16px; border-radius: 16px; border: 0; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); color: #fff; font: 400 1rem/1.4 var(--body); }
+.note::placeholder { color: rgba(245,238,230,.4); }
+.total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 18px; border-top: 1px dashed rgba(255,255,255,.15); font: 700 .78rem/1 var(--label); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,238,230,.6); }
+.total strong { font: 900 2.2rem/1 var(--label); letter-spacing: -.02em; color: #fff; text-transform: none; }
+.total strong.bump { animation: bump .35s var(--ease); }
+@keyframes bump { 50% { transform: scale(1.25); color: var(--mango); } }
+
+.phone-col { display: grid; gap: 18px; justify-items: center; position: sticky; top: 90px; }
+.phone { width: min(340px, 100%); border-radius: 46px; padding: 12px; background: linear-gradient(145deg, #2a2a2a, #0d0d0d); box-shadow: 0 0 0 1.5px rgba(255,255,255,.12), 0 50px 100px -30px rgba(0,0,0,.9), 0 0 80px -20px rgba(37,211,102,.35); transform: rotate(-2deg); transition: transform .8s var(--ease); }
+.phone:hover { transform: rotate(0) translateY(-6px); }
+.screen { border-radius: 36px; overflow: hidden; background: #0b141a; display: flex; flex-direction: column; height: 560px; position: relative; }
+.screen::before { content: ""; position: absolute; left: 50%; top: 10px; translate: -50% 0; width: 92px; height: 24px; border-radius: 99px; background: #000; z-index: 3; }
+.wa-top { display: flex; align-items: center; gap: 10px; padding: 46px 14px 12px; background: #202c33; }
+.wa-top img { width: 38px; height: 38px; border-radius: 50%; }
+.wa-top b { display: block; font: 700 .95rem/1.2 var(--body); }
+.wa-top small { color: #8696a0; font-size: .78rem; }
+.wa-top small.typing { color: var(--wa); }
+.chat { flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; background: #0b141a radial-gradient(rgba(255,255,255,.035) 1px, transparent 1.4px) 0 0/18px 18px; scrollbar-width: none; }
+.day { align-self: center; padding: 5px 10px; border-radius: 8px; background: #182229; color: #8696a0; font: 600 .68rem/1 var(--label); letter-spacing: .08em; text-transform: uppercase; }
+.bubble { max-width: 88%; padding: 8px 10px 6px; border-radius: 12px; font: 400 .9rem/1.4 var(--body); white-space: pre-line; word-wrap: break-word; position: relative; }
+.bubble.in { align-self: flex-start; background: #202c33; border-top-left-radius: 4px; }
+.bubble.out { align-self: flex-end; background: #005c4b; border-top-right-radius: 4px; animation: pop .4s var(--ease); }
+.bubble .meta { display: block; text-align: right; font-size: .66rem; color: rgba(255,255,255,.6); margin-top: 2px; }
+.bubble .meta i { color: #53bdeb; font-style: normal; }
+@keyframes pop { from { transform: scale(.92) translateY(8px); opacity: .4; } }
+.wa-bar { display: flex; align-items: center; gap: 8px; padding: 10px; background: #0b141a; }
+.wa-bar span { flex: 1; padding: 11px 14px; border-radius: 22px; background: #202c33; color: #8696a0; font-size: .85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wa-bar a { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: #06210f; }
+.wa-bar a svg { width: 20px; height: 20px; }
+.wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: min(340px, 100%); padding: 19px 26px; border-radius: 999px; background: var(--wa); color: #06210f; text-decoration: none; font: 800 .95rem/1 var(--label); letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset, 0 18px 50px -12px rgba(37,211,102,.75); transition: transform .35s var(--ease), box-shadow .35s; position: relative; overflow: hidden; }
+.wa-btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%); transform: translateX(-100%); animation: shine 3.2s ease-in-out infinite; }
+@keyframes shine { 60%, 100% { transform: translateX(100%); } }
 .wa-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 0 1px rgba(255,255,255,.3) inset, 0 24px 60px -10px rgba(37,211,102,.95); }
 .wa-btn svg { width: 24px; height: 24px; }
-@media (max-width: 900px) {
-  .b-photo { grid-column: span 12; grid-row: auto; aspect-ratio: 4/3; }
-  .b-step { grid-column: span 12; }
-  .b-cta { flex-direction: column; align-items: flex-start; }
+.tel-row { display: flex; align-items: center; gap: 10px; font: 800 1.35rem/1 var(--label); letter-spacing: -.01em; }
+.tel-row svg { width: 22px; height: 22px; color: var(--wa); }
+.copy { border: 0; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.08); color: rgba(245,238,230,.8); font: 700 .66rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.copy:hover { background: rgba(255,255,255,.16); }
+@media (max-width: 960px) {
+  .order-grid { grid-template-columns: minmax(0, 1fr); }
+  .phone-col { position: static; }
+  .screen { height: 500px; }
+}
+@media (max-width: 480px) {
+  .pick { grid-template-columns: 52px minmax(0, 1fr); }
+  .pick img { width: 52px; height: 52px; }
+  .pick .qty { grid-column: 1 / -1; justify-self: end; }
 }
 .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 70; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; background: #25D366; color: #fff; box-shadow: 0 14px 34px -8px rgba(37,211,102,.7); transition: transform .35s var(--ease); }
 .wa-float:hover { transform: scale(1.08); }
+.wa-float.hide { transform: scale(0); pointer-events: none; }
 .wa-float svg { width: 32px; height: 32px; }
 .wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: pulse 2.4s ease-out infinite; }
 
@@ -334,7 +394,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     </div>
     <div class="cards">
       <article class="card reveal">
-        <figure><img src="assets/img/vaso-frutas.webp" alt="Vaso Pecatté lleno de fresa, mango, kiwi y banano bañados en crema" loading="lazy" width="1200" height="1200"></figure>
+        <figure><span class="angle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>Otro ángulo</span><img class="img-a" src="assets/img/vaso-frutas.webp" alt="Vaso Pecatté lleno de fresa, mango, kiwi y banano bañados en crema" loading="lazy" width="1200" height="1200"><img class="img-b" src="assets/img/tropical-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
         <div class="info">
           <span class="num">01 · El más fresco</span>
           <h3>Pecado <span class="script">Tropical</span></h3>
@@ -343,7 +403,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
         </div>
       </article>
       <article class="card reveal">
-        <figure><img src="assets/img/postre-crema-fruta.webp" alt="Vaso con capas de crema y fruta picada, coronado con crema, fruta y menta" loading="lazy" width="928" height="1152"></figure>
+        <figure><span class="angle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>Otro ángulo</span><img class="img-a" src="assets/img/postre-crema-fruta.webp" alt="Vaso con capas de crema y fruta picada, coronado con crema, fruta y menta" loading="lazy" width="928" height="1152"><img class="img-b" src="assets/img/clasico-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
         <div class="info">
           <span class="num">02 · El clásico</span>
           <h3>Pecado <span class="script">Clásico</span></h3>
@@ -352,7 +412,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
         </div>
       </article>
       <article class="card reveal">
-        <figure><img src="assets/img/postre-galleta-salsa.webp" alt="Vaso con base de galleta, crema, fruta y salsa de fresa por encima" loading="lazy" width="928" height="1152"></figure>
+        <figure><span class="angle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>Otro ángulo</span><img class="img-a" src="assets/img/postre-galleta-salsa.webp" alt="Vaso con base de galleta, crema, fruta y salsa de fresa por encima" loading="lazy" width="928" height="1152"><img class="img-b" src="assets/img/galleta-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
         <div class="info">
           <span class="num">03 · El más tentador</span>
           <h3>Pecado de <span class="script">Galleta</span></h3>
@@ -375,21 +435,65 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
   <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <div class="wrap">
     <div class="order-head reveal">
-      <span class="live"><i></i> Pedidos abiertos</span>
-      <h2>Tu antojo,<br><span class="grad">a un mensaje</span></h2>
-      <p>Para un antojo, una reunión o un regalo. Escríbenos por WhatsApp y armamos tu pedido.</p>
+      <span class="live"><i></i> Pedidos abiertos por WhatsApp</span>
+      <h2>Arma tu <span class="grad">pecado</span></h2>
+      <p>Elige tus vasos y mira cómo se escribe tu pedido en el chat. Cuando esté listo, lo envías por WhatsApp con un toque.</p>
     </div>
-    <div class="bento">
-      <figure class="glass b-photo reveal">
-        <img src="assets/img/vaso-frutas.webp" alt="Postre Pecatté de fruta con crema" loading="lazy">
-        <figcaption class="chip">Pecado Tropical</figcaption>
-      </figure>
-      <div class="glass b-step reveal"><span class="n">01</span><div><h3>Elige tu pecado</h3><p>Tropical, Clásico o de Galleta. O pídelo como más te guste.</p></div></div>
-      <div class="glass b-step reveal"><span class="n">02</span><div><h3>Escríbenos por WhatsApp</h3><p>Dinos cuántos vasos quieres y para cuándo.</p></div></div>
-      <div class="glass b-step reveal"><span class="n">03</span><div><h3>Lo preparamos a mano</h3><p>Capa por capa, con fruta picada y crema de leche.</p></div></div>
-      <div class="glass b-cta reveal">
-        <div><p class="k">WhatsApp de pedidos</p><p class="tel" id="waTel"></p></div>
-        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg> Pedir por WhatsApp</a>
+    <div class="order-grid">
+      <div class="glass builder reveal">
+        <div>
+          <p class="step-t"><b>1</b> Elige tus pecados</p>
+          <div class="picks">
+          <div class="pick" data-key="Pecado Tropical">
+            <img src="assets/img/tropical-2.webp" alt="" loading="lazy">
+            <div><h4>Pecado <span class="script">Tropical</span></h4><small>Fruta picada y crema hasta el borde</small></div>
+            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado Tropical">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado Tropical">+</button></div>
+          </div>
+          <div class="pick" data-key="Pecado Clásico">
+            <img src="assets/img/clasico-2.webp" alt="" loading="lazy">
+            <div><h4>Pecado <span class="script">Clásico</span></h4><small>Capas de crema, fruta y menta</small></div>
+            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado Clásico">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado Clásico">+</button></div>
+          </div>
+          <div class="pick" data-key="Pecado de Galleta">
+            <img src="assets/img/galleta-2.webp" alt="" loading="lazy">
+            <div><h4>Pecado de <span class="script">Galleta</span></h4><small>Galleta, crema, fruta y salsa de fresa</small></div>
+            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado de Galleta">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado de Galleta">+</button></div>
+          </div>
+          </div>
+        </div>
+        <div>
+          <p class="step-t"><b>2</b> ¿Para cuándo?</p>
+          <div class="when" role="radiogroup" aria-label="Para cuándo">
+            <label><input type="radio" name="when" value="Hoy"><span>Hoy</span></label>
+            <label><input type="radio" name="when" value="Mañana" checked><span>Mañana</span></label>
+            <label><input type="radio" name="when" value="Esta semana"><span>Esta semana</span></label>
+            <label><input type="radio" name="when" value="Para un evento"><span>Para un evento</span></label>
+          </div>
+        </div>
+        <div>
+          <p class="step-t"><b>3</b> ¿Algo más?</p>
+          <input class="note" id="note" type="text" maxlength="140" placeholder="Ej.: sin kiwi, es para un regalo…" aria-label="Nota para tu pedido">
+        </div>
+        <div class="total"><span>Total de vasos</span><strong id="total">0</strong></div>
+      </div>
+
+      <div class="phone-col reveal">
+        <div class="phone" aria-label="Vista previa del mensaje de WhatsApp">
+          <div class="screen">
+            <div class="wa-top">
+              <img src="assets/logos/06-sello-monograma-4cm.svg" alt="">
+              <div><b>Pecatté</b><small id="waStatus">en línea</small></div>
+            </div>
+            <div class="chat" id="chat">
+              <span class="day">Hoy</span>
+              <div class="bubble in">¡Hola! 🍓 Bienvenido a Pecatté. Arma tu pedido y te respondemos por aquí.<span class="meta">ahora</span></div>
+              <div class="bubble out" id="preview"></div>
+            </div>
+            <div class="wa-bar"><span>Mensaje</span><a class="js-wa" href="#" target="_blank" rel="noopener" aria-label="Enviar por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg></a></div>
+          </div>
+        </div>
+        <a class="wa-btn js-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg> Enviar pedido</a>
+        <div class="tel-row"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg><span id="waTel"></span><button class="copy" type="button" id="copyTel">Copiar</button></div>
       </div>
     </div>
   </div>
@@ -416,9 +520,74 @@ const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const waUrl = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`;
-  document.querySelectorAll("#waBtn, #waFloat").forEach(a => a.href = waUrl);
-  document.getElementById("waTel").textContent = "+" + WHATSAPP.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
+  const waLink = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  const telFmt = "+" + WHATSAPP.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
+  document.getElementById("waFloat").href = waLink(WA_TEXT);
+  document.getElementById("waTel").textContent = telFmt;
+  document.getElementById("copyTel").addEventListener("click", e => {
+    navigator.clipboard?.writeText(telFmt).then(() => {
+      e.target.textContent = "¡Copiado!"; setTimeout(() => e.target.textContent = "Copiar", 1600);
+    });
+  });
+
+  // Pedido: cantidades, fecha y nota -> mensaje de WhatsApp en vivo
+  const picks = [...document.querySelectorAll(".pick")];
+  const preview = document.getElementById("preview"), totalEl = document.getElementById("total");
+  const status = document.getElementById("waStatus"), note = document.getElementById("note");
+  const qty = Object.fromEntries(picks.map(p => [p.dataset.key, 0]));
+  let typingTimer;
+  const compose = () => {
+    const items = Object.entries(qty).filter(([, n]) => n > 0);
+    const when = document.querySelector('input[name="when"]:checked')?.value;
+    let msg = "¡Hola Pecatté! 🍓 Quiero hacer un pedido";
+    if (items.length) msg += ":\n" + items.map(([k, n]) => `• ${n} × ${k}`).join("\n");
+    else msg += ".";
+    if (when) msg += `\nPara: ${when}`;
+    if (note.value.trim()) msg += `\nNota: ${note.value.trim()}`;
+    return msg;
+  };
+  const render = () => {
+    const msg = compose();
+    const time = new Date().toLocaleTimeString("es-CO", { hour: "numeric", minute: "2-digit" });
+    preview.textContent = msg;
+    const meta = document.createElement("span"); meta.className = "meta"; meta.innerHTML = `${time} <i>✓✓</i>`;
+    preview.append(meta);
+    preview.style.animation = "none"; preview.offsetWidth; preview.style.animation = "";
+    document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(msg));
+    const total = Object.values(qty).reduce((a, b) => a + b, 0);
+    if (totalEl.textContent !== String(total)) { totalEl.textContent = total; totalEl.classList.remove("bump"); totalEl.offsetWidth; totalEl.classList.add("bump"); }
+    status.textContent = "escribiendo…"; status.classList.add("typing");
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => { status.textContent = "en línea"; status.classList.remove("typing"); }, 900);
+  };
+  picks.forEach(p => p.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    const k = p.dataset.key;
+    qty[k] = Math.max(0, Math.min(99, qty[k] + +b.dataset.d));
+    p.querySelector("output").textContent = qty[k];
+    p.classList.toggle("on", qty[k] > 0);
+    render();
+  })));
+  document.querySelectorAll('input[name="when"]').forEach(r => r.addEventListener("change", render));
+  note.addEventListener("input", render);
+  render();
+
+  // El botón flotante se oculta en la sección de pedidos (ya tiene sus propios botones)
+  const waFloat = document.getElementById("waFloat");
+  new IntersectionObserver(([e]) => waFloat.classList.toggle("hide", e.isIntersecting), { threshold: .15 })
+    .observe(document.getElementById("pedidos"));
+
+  // Menú: la segunda imagen se revela desde el cursor; en táctil alterna sola
+  document.querySelectorAll(".card").forEach(c => {
+    c.addEventListener("pointermove", e => {
+      const r = c.querySelector("figure").getBoundingClientRect();
+      c.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      c.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
+  if (!reduce && matchMedia("(hover: none)").matches) {
+    const cards = [...document.querySelectorAll(".card")];
+    cards.forEach((c, i) => setTimeout(() => setInterval(() => c.classList.toggle("flip"), 3200), i * 700));
+  }
 
   // Barra de progreso y nav sólida
   const nav = document.querySelector(".nav"), bar = document.querySelector(".progress");
