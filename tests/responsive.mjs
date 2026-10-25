@@ -68,17 +68,40 @@ const tests = {
     await page.locator('.card img').evaluateAll(imgs => Promise.all(imgs.map(i => { i.loading = 'eager'; return i.decode().catch(() => {}); })));
     assert.ok(await page.locator('.card img').evaluateAll(imgs => imgs.length === 6 && imgs.every(i => i.naturalWidth > 0)), '6 imágenes cargadas');
     assert.equal(await page.locator('.angle').count(), 0, 'sin botón "Otro ángulo"');
+    const figH = await page.locator('.card figure').first().evaluate(f => f.getBoundingClientRect().height);
+    assert.ok(figH <= 262, `foto de ${Math.round(figH)}px, máximo ~260`);
   },
   async 'pedido por WhatsApp'(page) {
+    // Desde la tarjeta: "Agregar al pedido" se vuelve un control − n + que edita el carrito
+    await page.evaluate(() => document.querySelectorAll('.reveal').forEach(e => e.classList.add('in')));
+    const mango = page.locator('.card[data-key="Pecado de Mango"]'), fresa = page.locator('.card[data-key="Pecado de Fresa"]');
+    await mango.locator('.add').click();
+    assert.ok(await mango.locator('.add').isHidden() && await mango.locator('.incart').isVisible(), 'cambia a control');
+    await mango.locator('.incart [data-d="1"]').click(); await mango.locator('.incart [data-d="1"]').click();
+    await mango.locator('.incart [data-d="-1"]').click();
+    assert.equal(await mango.locator('.incart .n').textContent(), '2');
+    assert.equal(await page.locator('#cartN').textContent(), '2');
+    // Restar hasta 0 desde la tarjeta lo quita y vuelve el botón
+    await fresa.locator('.add').click(); await fresa.locator('.incart [data-d="-1"]').click();
+    assert.ok(await fresa.locator('.add').isVisible(), 'vuelve "Agregar al pedido"');
+    assert.equal(await page.locator('#cartN').textContent(), '2');
+    // Desde la sección de pedidos: +1 de guanábana
     await page.locator('#pedidos').scrollIntoViewIfNeeded();
-    const plus = page.locator('.pick .qty button[data-d="1"]');
-    await plus.nth(0).click(); await plus.nth(0).click(); await plus.nth(2).click();
+    await page.locator('.pick[data-key="Pecado de Guanábana"] button[data-d="1"]').click();
     await page.locator('.when label', { hasText: 'Hoy' }).click();
-    await page.fill('#note', 'sin kiwi');
+    await page.fill('#note', 'sin menta');
     assert.equal(await page.locator('#total').textContent(), '3');
+    assert.equal(await page.locator('#totalPay').textContent(), '$30.000');
     const href = decodeURIComponent(await page.locator('.wa-btn.js-wa').getAttribute('href'));
-    for (const s of ['wa.me/573203703184', '2 × Pecado Tropical', '1 × Pecado de Galleta', 'Para: Hoy', 'Nota: sin kiwi']) assert.ok(href.includes(s), `falta "${s}"`);
+    for (const s of ['wa.me/573203703184', '2 × Pecado de Mango — $20.000', '1 × Pecado de Guanábana — $10.000', 'Total a pagar: $30.000', 'Para: Hoy', 'Nota: sin menta', 'confirmado al realizar el pago']) assert.ok(href.includes(s), `falta "${s}"`);
     assert.equal(await page.locator('#waTel').textContent(), '+57 320 370 3184');
+    // La sección de pedidos y la tarjeta están sincronizadas, y "Vaciar" limpia todo
+    await page.locator('.pick[data-key="Pecado de Mango"] button[data-d="-1"]').click();
+    assert.equal(await mango.locator('.incart .n').textContent(), '1');
+    await page.locator('#clearCart').click();
+    assert.equal(await page.locator('#totalPay').textContent(), '$0');
+    assert.ok(await page.locator('#cartN').isHidden() && await page.locator('#clearCart').isHidden(), 'sin contador ni "Vaciar"');
+    assert.ok(await mango.locator('.add').isVisible(), 'tarjeta vuelve a "Agregar"');
   },
   async 'video en bucle'(page) {
     const v = await page.locator('#heroVideo').evaluate(async v => { await new Promise(r => setTimeout(r, 1500)); return { loop: v.loop, muted: v.muted, t: v.currentTime, w: v.videoWidth }; });

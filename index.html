@@ -206,21 +206,49 @@ section { position: relative; }
 .menu-sec .sec-head .eyebrow { color: var(--mango); }
 .menu-sec .sec-head h2 .script { color: var(--mango); }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
-.card { --mx: 50%; --my: 50%; position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 26px; overflow: hidden; isolation: isolate; background: #fff; color: var(--choco); box-shadow: 0 30px 60px -30px rgba(0,0,0,.65); transition: transform .5s var(--ease), box-shadow .5s; }
+.card { position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 26px; overflow: hidden; isolation: isolate; background: #fff; color: var(--choco); box-shadow: 0 30px 60px -30px rgba(0,0,0,.65); transition: transform .5s var(--ease), box-shadow .5s; }
 .card:hover { transform: translateY(-10px); box-shadow: 0 45px 80px -30px rgba(0,0,0,.8), 0 0 0 3px var(--mango); }
-.card figure { position: relative; flex: none; aspect-ratio: 4/5; overflow: hidden; margin: 10px 10px 0; border-radius: 18px; }
-.card figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.card .img-a { transition: transform 1.2s var(--ease), filter .8s; }
-.card .img-b { clip-path: circle(0% at var(--mx) var(--my)); transform: scale(1.15); transition: clip-path .9s var(--ease), transform 1.4s var(--ease); }
-.card:hover .img-a, .card.flip .img-a { transform: scale(1.1); filter: blur(2px) brightness(.85); }
-.card:hover .img-b, .card.flip .img-b { clip-path: circle(150% at var(--mx) var(--my)); transform: none; }
-.card .info { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; }
+.card figure { position: relative; flex: none; aspect-ratio: 4/5; overflow: hidden; margin: 8px 8px 0; border-radius: 18px; }
+.card figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
+.card:hover figure img { transform: scale(1.06); }
+.card .info { position: relative; flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 14px 18px 16px; }
 .card .num { font: 700 .72rem/1 var(--label); letter-spacing: .24em; text-transform: uppercase; color: #D98516; }
-.card h3 { font-size: clamp(1.6rem, 2.2vw, 1.95rem); color: var(--choco); }
+.card h3 { font-size: clamp(1.4rem, 1.9vw, 1.65rem); color: var(--choco); }
 .card h3 .script { color: var(--mango); font-size: 1.3em; }
-.card p { color: #6a4b3e; font-size: .98rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
-.tags span { font: 700 .64rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; padding: 8px 11px; border-radius: 999px; background: #FDF1DC; color: var(--choco); box-shadow: inset 0 0 0 1px rgba(242,163,58,.45); }
+.card p { color: #6a4b3e; font-size: .92rem; line-height: 1.5; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 6px; }
+.tags span { font: 700 .58rem/1 var(--label); letter-spacing: .12em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: #FDF1DC; color: var(--choco); box-shadow: inset 0 0 0 1px rgba(242,163,58,.45); }
+/* Comprar desde la tarjeta: precio, cantidad y agregar al pedido */
+.buy { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; padding-top: 12px; border-top: 1px dashed rgba(59,34,24,.15); }
+.buy .price { display: grid; gap: 4px; font: 700 .62rem/1 var(--label); letter-spacing: .18em; text-transform: uppercase; color: #8a6a5c; }
+.buy .price b { font: 900 1.25rem/1 var(--label); letter-spacing: -.02em; color: var(--choco); text-transform: none; }
+.cta { flex: none; }
+.cta, .pick { scroll-margin: 100px 0; }
+.cta [hidden] { display: none !important; }
+.add { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: linear-gradient(135deg, var(--fresa), #e0565f); color: #fff; font: 800 .7rem/1 var(--label); letter-spacing: .1em; text-transform: uppercase; box-shadow: 0 14px 30px -12px rgba(200,65,75,.8); transition: transform .3s var(--ease), box-shadow .3s; }
+.add svg { width: 16px; height: 16px; flex: none; }
+.add:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(200,65,75,.95); }
+.add:active { transform: scale(.97); }
+.incart { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 40px; padding: 3px; border-radius: 999px; background: var(--choco); color: var(--merengue); box-shadow: 0 14px 30px -12px rgba(59,34,24,.7); animation: pop .35s var(--ease); }
+.incart button { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(246,235,221,.12); color: #fff; font: 700 1.1rem/1 var(--label); transition: background .25s, color .25s, transform .2s; }
+.incart button:hover { background: var(--mango); color: var(--choco); }
+.incart button:active { transform: scale(.9); }
+.incart button.trash:hover { background: var(--fresa); color: #fff; }
+.incart button svg { width: 16px; height: 16px; }
+.incart > span { min-width: 62px; text-align: center; font: 700 .6rem/1.2 var(--label); letter-spacing: .06em; text-transform: uppercase; color: rgba(246,235,221,.75); }
+.incart b { display: block; font: 900 1rem/1.1 var(--label); letter-spacing: 0; color: var(--mango); text-transform: none; }
+.add:focus-visible, .incart button:focus-visible, .clear:focus-visible { outline: 2px solid var(--mango); outline-offset: 2px; }
+.clear { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; border: 0; padding: 8px 12px; border-radius: 999px; background: rgba(200,65,75,.15); color: #ff9aa2; font: 700 .66rem/1 var(--label); letter-spacing: .14em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(200,65,75,.45); transition: background .25s, color .25s; }
+.clear[hidden] { display: none; }
+.clear svg { width: 14px; height: 14px; }
+.clear:hover { background: var(--fresa); color: #fff; }
+.cart-n { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; margin-left: 2px; border-radius: 999px; background: var(--merengue); color: var(--fresa); font: 800 .7rem/1 var(--label); letter-spacing: 0; }
+.cart-n[hidden] { display: none; }
+.cart-n.bump { animation: bump .35s var(--ease); }
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 80; display: flex; align-items: center; gap: 14px; width: max-content; max-width: calc(100% - 32px); padding: 12px 12px 12px 18px; border-radius: 18px; background: var(--choco-2); color: var(--merengue); box-shadow: 0 20px 50px -15px rgba(0,0,0,.7), inset 0 0 0 1px rgba(246,235,221,.12); font: 600 .92rem/1.3 var(--body); translate: -50% 140%; opacity: 0; transition: translate .5s var(--ease), opacity .4s; pointer-events: none; }
+.toast.show { translate: -50% 0; opacity: 1; pointer-events: auto; }
+@media (max-width: 640px) { .toast { top: 78px; bottom: auto; translate: -50% -160%; } .toast.show { translate: -50% 0; } }
+.toast a { flex: none; padding: 10px 14px; border-radius: 12px; background: var(--mango); color: var(--choco-2); text-decoration: none; font: 800 .7rem/1 var(--label); letter-spacing: .12em; text-transform: uppercase; }
 @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); } }
 @media (max-width: 640px) { .cards { grid-template-columns: minmax(0, 1fr); max-width: 440px; margin-inline: auto; } .card:last-child:nth-child(odd) { grid-column: auto; width: auto; justify-self: stretch; } }
 
@@ -275,6 +303,11 @@ section { position: relative; }
 .total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 18px; border-top: 1px dashed rgba(255,255,255,.15); font: 700 .78rem/1 var(--label); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,238,230,.6); }
 .total strong { font: 900 2.2rem/1 var(--label); letter-spacing: -.02em; color: #fff; text-transform: none; }
 .total strong.bump { animation: bump .35s var(--ease); }
+.total + .total { padding-top: 0; border-top: 0; margin-top: -14px; }
+.total.pay strong { color: var(--mango); }
+.pay-note { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: rgba(242,163,58,.1); box-shadow: inset 0 0 0 1px rgba(242,163,58,.35); color: rgba(245,238,230,.85); font-size: .95rem; line-height: 1.45; }
+.pay-note svg { flex: none; width: 22px; height: 22px; color: var(--mango); margin-top: 1px; }
+.pick small b { color: var(--mango); font-weight: 600; }
 @keyframes bump { 50% { transform: scale(1.25); color: var(--mango); } }
 
 .phone-col { display: grid; gap: 18px; justify-items: center; position: sticky; top: 90px; }
@@ -356,7 +389,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
       <li><a href="#pedidos">Pedidos</a></li>
     </ul>
     <div class="nav-actions">
-      <a class="btn btn-fresa nav-cta" href="#pedidos">Pedir</a>
+      <a class="btn btn-fresa nav-cta" href="#pedidos">Pedir <span class="cart-n" id="cartN" hidden>0</span></a>
       <button class="burger" id="burger" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú"><span></span><span></span></button>
     </div>
   </div>
@@ -411,8 +444,8 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Fresa <b>✦</b> <i>Mango</i> <b>✦</b> Kiwi <b>✦</b> <i>Crema de leche</i> <b>✦</b> Galleta <b>✦</b> <i>Salsa de fresa</i> <b>✦</b> Banano <b>✦</b> <i>Uva</i> <b>✦</b></span>
-    <span>Fresa <b>✦</b> <i>Mango</i> <b>✦</b> Kiwi <b>✦</b> <i>Crema de leche</i> <b>✦</b> Galleta <b>✦</b> <i>Salsa de fresa</i> <b>✦</b> Banano <b>✦</b> <i>Uva</i> <b>✦</b></span>
+    <span>Mango <b>✦</b> <i>Guanábana</i> <b>✦</b> Maracuyá <b>✦</b> <i>Crema de leche</i> <b>✦</b> Fresa <b>✦</b> <i>Maracumango</i> <b>✦</b> Piña <b>✦</b> <i>Galleta</i> <b>✦</b></span>
+    <span>Mango <b>✦</b> <i>Guanábana</i> <b>✦</b> Maracuyá <b>✦</b> <i>Crema de leche</i> <b>✦</b> Fresa <b>✦</b> <i>Maracumango</i> <b>✦</b> Piña <b>✦</b> <i>Galleta</i> <b>✦</b></span>
   </div>
 </div>
 
@@ -421,7 +454,7 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     <div class="sec-head reveal">
       <p class="eyebrow">Anatomía de un pecado</p>
       <h2>Cinco capas, <span class="script">cero culpa</span></h2>
-      <p>Así se arma nuestro Pecado Clásico, de abajo hacia arriba. Toca un punto o una capa para conocerla.</p>
+      <p>Así se arma cada pecado, de abajo hacia arriba. Toca un punto o una capa para conocerla.</p>
     </div>
     <div class="anatomy" id="anatomy">
       <figure class="cup-photo" id="cup">
@@ -448,34 +481,61 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     <div class="sec-head reveal">
       <p class="eyebrow">El menú</p>
       <h2>Elige tu <span class="script">pecado</span></h2>
-      <p>Tres formas de darse un gusto, todas servidas en vaso y listas para llevar.</p>
+      <p>Seis sabores, un mismo pecado: crema de leche, galleta triturada y fruta de verdad. Elige cuántos quieres y agrégalos a tu pedido.</p>
     </div>
     <div class="cards">
-      <article class="card reveal">
-        <figure><img class="img-a" src="assets/img/vaso-frutas.webp" alt="Vaso Pecatté lleno de fresa, mango, kiwi y banano bañados en crema" loading="lazy" width="1200" height="1200"><img class="img-b" src="assets/img/tropical-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
+      <article class="card reveal" data-key="Pecado de Mango" data-short="Mango maduro, crema y galleta">
+        <figure><img src="assets/img/sabores/mango.webp" alt="Vaso Pecatté de mango con capas de crema, galleta y cubos de mango con menta" loading="lazy" width="900" height="1125"></figure>
         <div class="info">
-          <span class="num">01 · El más fresco</span>
-          <h3>Pecado <span class="script">Tropical</span></h3>
-          <p>Fruta picada en abundancia bañada en crema de leche, hasta el borde del vaso.</p>
-          <div class="tags"><span>Fresa</span><span>Mango</span><span>Kiwi</span><span>Banano</span></div>
+          <span class="num">01 · El favorito</span>
+          <h3>Pecado de <span class="script">Mango</span></h3>
+          <p>Cubos de mango maduro entre capas de crema de leche y galleta triturada.</p>
+          <div class="tags"><span>Mango</span><span>Crema</span><span>Galleta</span></div>
         </div>
       </article>
-      <article class="card reveal">
-        <figure><img class="img-a" src="assets/img/postre-crema-fruta.webp" alt="Vaso con capas de crema y fruta picada, coronado con crema, fruta y menta" loading="lazy" width="928" height="1152"><img class="img-b" src="assets/img/clasico-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
+      <article class="card reveal" data-key="Pecado de Maracumango" data-short="Mango y maracuyá, dulce y ácido">
+        <figure><img src="assets/img/sabores/maracumango.webp" alt="Vaso Pecatté de maracumango con mango picado y semillas de maracuyá sobre crema" loading="lazy" width="900" height="1200"></figure>
         <div class="info">
-          <span class="num">02 · El clásico</span>
-          <h3>Pecado <span class="script">Clásico</span></h3>
-          <p>Capas de crema y fruta, con un copete de crema y menta fresca arriba.</p>
-          <div class="tags"><span>Crema</span><span>Fruta</span><span>Menta</span></div>
+          <span class="num">02 · El más tropical</span>
+          <h3>Pecado de <span class="script">Maracumango</span></h3>
+          <p>Mango y maracuyá con sus semillas: un dulce-ácido que engancha desde la primera cucharada.</p>
+          <div class="tags"><span>Maracuyá</span><span>Mango</span><span>Crema</span></div>
         </div>
       </article>
-      <article class="card reveal">
-        <figure><img class="img-a" src="assets/img/postre-galleta-salsa.webp" alt="Vaso con base de galleta, crema, fruta y salsa de fresa por encima" loading="lazy" width="928" height="1152"><img class="img-b" src="assets/img/galleta-2.webp" alt="" loading="lazy" width="720" height="900"></figure>
+      <article class="card reveal" data-key="Pecado de Guanábana" data-short="Guanábana suave y cremosa">
+        <figure><img src="assets/img/sabores/guanabana.webp" alt="Vaso Pecatté de guanábana con capas de crema y galleta" loading="lazy" width="900" height="1200"></figure>
         <div class="info">
-          <span class="num">03 · El más tentador</span>
-          <h3>Pecado de <span class="script">Galleta</span></h3>
-          <p>Base de galleta, crema, fruta y una salsa de fresa que chorrea por las paredes.</p>
-          <div class="tags"><span>Galleta</span><span>Crema</span><span>Salsa de fresa</span></div>
+          <span class="num">03 · El más suave</span>
+          <h3>Pecado de <span class="script">Guanábana</span></h3>
+          <p>Guanábana fresca y cremosa, con capas de crema de leche y galleta que cruje.</p>
+          <div class="tags"><span>Guanábana</span><span>Crema</span><span>Galleta</span></div>
+        </div>
+      </article>
+      <article class="card reveal" data-key="Pecado de Maracuyá" data-short="Maracuyá intenso con crema">
+        <figure><img src="assets/img/sabores/maracuya.webp" alt="Vaso Pecatté de maracuyá con pulpa y semillas sobre crema" loading="lazy" width="900" height="1125"></figure>
+        <div class="info">
+          <span class="num">04 · El más atrevido</span>
+          <h3>Pecado de <span class="script">Maracuyá</span></h3>
+          <p>Pulpa de maracuyá con su toque ácido, balanceada con crema suave y galleta.</p>
+          <div class="tags"><span>Maracuyá</span><span>Crema</span><span>Galleta</span></div>
+        </div>
+      </article>
+      <article class="card reveal" data-key="Pecado de Fresa" data-short="Fresas frescas y crema">
+        <figure><img src="assets/img/sabores/fresa.webp" alt="Vaso Pecatté de fresa con capas de crema, galleta y fresas frescas" loading="lazy" width="900" height="1350"></figure>
+        <div class="info">
+          <span class="num">05 · El clásico</span>
+          <h3>Pecado de <span class="script">Fresa</span></h3>
+          <p>Fresas frescas y jugosas con crema de leche y galleta, el pecado de siempre.</p>
+          <div class="tags"><span>Fresa</span><span>Crema</span><span>Galleta</span></div>
+        </div>
+      </article>
+      <article class="card reveal" data-key="Pecado de Piña" data-short="Piña dulce y refrescante">
+        <figure><img src="assets/img/sabores/pina.webp" alt="Vaso Pecatté de piña con capas de crema, galleta y piña picada" loading="lazy" width="900" height="1125"></figure>
+        <div class="info">
+          <span class="num">06 · El más fresco</span>
+          <h3>Pecado de <span class="script">Piña</span></h3>
+          <p>Piña dulce picada en capas de crema y galleta, refrescante como pocas.</p>
+          <div class="tags"><span>Piña</span><span>Crema</span><span>Galleta</span></div>
         </div>
       </article>
     </div>
@@ -495,29 +555,14 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
     <div class="order-head reveal">
       <span class="live"><i></i> Pedidos abiertos por WhatsApp</span>
       <h2>Arma tu <span class="grad">pecado</span></h2>
-      <p>Elige tus vasos y mira cómo se escribe tu pedido en el chat. Cuando esté listo, lo envías por WhatsApp con un toque.</p>
+      <p>Agrega tus vasos desde el menú o aquí mismo y mira cómo se escribe tu pedido en el chat, con el total a pagar. Cuando esté listo, lo envías por WhatsApp con un toque.</p>
     </div>
     <div class="order-grid">
       <div class="glass builder reveal">
         <div>
-          <p class="step-t"><b>1</b> Elige tus pecados</p>
-          <div class="picks">
-          <div class="pick" data-key="Pecado Tropical">
-            <img src="assets/img/tropical-2.webp" alt="" loading="lazy">
-            <div><h4>Pecado <span class="script">Tropical</span></h4><small>Fruta picada y crema hasta el borde</small></div>
-            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado Tropical">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado Tropical">+</button></div>
-          </div>
-          <div class="pick" data-key="Pecado Clásico">
-            <img src="assets/img/clasico-2.webp" alt="" loading="lazy">
-            <div><h4>Pecado <span class="script">Clásico</span></h4><small>Capas de crema, fruta y menta</small></div>
-            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado Clásico">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado Clásico">+</button></div>
-          </div>
-          <div class="pick" data-key="Pecado de Galleta">
-            <img src="assets/img/galleta-2.webp" alt="" loading="lazy">
-            <div><h4>Pecado de <span class="script">Galleta</span></h4><small>Galleta, crema, fruta y salsa de fresa</small></div>
-            <div class="qty"><button type="button" data-d="-1" aria-label="Quitar un Pecado de Galleta">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="Agregar un Pecado de Galleta">+</button></div>
-          </div>
-          </div>
+          <p class="step-t"><b>1</b> Elige tus pecados <button class="clear" type="button" id="clearCart" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>Vaciar</button></p>
+          <!-- Se arma desde las tarjetas del menú -->
+          <div class="picks" id="picks"></div>
         </div>
         <div>
           <p class="step-t"><b>2</b> ¿Para cuándo?</p>
@@ -533,6 +578,8 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
           <input class="note" id="note" type="text" maxlength="140" placeholder="Ej.: sin kiwi, es para un regalo…" aria-label="Nota para tu pedido">
         </div>
         <div class="total"><span>Total de vasos</span><strong id="total">0</strong></div>
+        <div class="total pay"><span>Total a pagar</span><strong id="totalPay">$0</strong></div>
+        <p class="pay-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Tu pedido queda confirmado cuando realices el pago. Te enviamos los datos de pago por WhatsApp.</span></p>
       </div>
 
       <div class="phone-col reveal">
@@ -557,6 +604,8 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
   </div>
 </section>
 
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastMsg"></span><a href="#pedidos">Ver pedido</a></div>
+
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
 
 <footer>
@@ -571,8 +620,10 @@ footer .meta b { font: 600 .72rem/1 var(--label); letter-spacing: .2em; text-tra
 
 <script>
 // Número de WhatsApp: código de país + número, solo dígitos.
-const WHATSAPP = "573203703184";
+const WHATSAPP = "573173534988";
 const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
+// Precio por vaso en pesos colombianos.
+const PRECIO = 10000;
 
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -588,20 +639,61 @@ const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
     });
   });
 
-  // Pedido: cantidades, fecha y nota -> mensaje de WhatsApp en vivo
-  const picks = [...document.querySelectorAll(".pick")];
+  // Pedido: un solo carrito para las tarjetas del menú y la sección de pedidos
+  const money = n => "$" + n.toLocaleString("es-CO");
+  const bump = el => { el.classList.remove("bump"); el.offsetWidth; el.classList.add("bump"); };
+  const qtyHTML = (name, n) => `<div class="qty"><button type="button" data-d="-1" aria-label="Quitar un ${name}">−</button><output aria-live="polite">${n}</output><button type="button" data-d="1" aria-label="Agregar un ${name}">+</button></div>`;
+  const cards = [...document.querySelectorAll(".card")];
+
+  const picksBox = document.getElementById("picks");
+  cards.forEach(c => {
+    const k = c.dataset.key;
+    picksBox.insertAdjacentHTML("beforeend", `<div class="pick" data-key="${k}">
+      <img src="${c.querySelector("img").getAttribute("src")}" alt="" loading="lazy">
+      <div><h4>${c.querySelector("h3").innerHTML}</h4><small>${c.dataset.short} · <b class="sub">${money(PRECIO)} c/u</b></small></div>
+      ${qtyHTML(k, 0)}</div>`);
+  });
+  // Tarjetas: "Agregar al pedido" y, ya en el carrito, el control − n + que lo edita directo
+  const cartIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1"/><circle cx="17" cy="20.5" r="1"/></svg>';
+  const trashIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>';
+  cards.forEach(c => {
+    const k = c.dataset.key;
+    c.querySelector(".info").insertAdjacentHTML("beforeend", `<div class="buy"><span class="price">Precio<b>${money(PRECIO)}</b></span>
+      <div class="cta">
+        <button class="add" type="button" aria-label="Agregar ${k} al pedido">${cartIcon}<span>Agregar</span></button>
+        <div class="incart" hidden>
+          <button type="button" data-d="-1" aria-label="Quitar un ${k}">−</button>
+          <span aria-live="polite"><b class="n">0</b><span class="sub"></span></span>
+          <button type="button" data-d="1" aria-label="Agregar un ${k}">+</button>
+        </div>
+      </div></div>`);
+  });
+
+  const picks = [...picksBox.querySelectorAll(".pick")];
   const preview = document.getElementById("preview"), totalEl = document.getElementById("total");
+  const payEl = document.getElementById("totalPay"), cartN = document.getElementById("cartN");
+  const clearBtn = document.getElementById("clearCart");
   const status = document.getElementById("waStatus"), note = document.getElementById("note");
+  const toast = document.getElementById("toast"), toastMsg = document.getElementById("toastMsg");
   const qty = Object.fromEntries(picks.map(p => [p.dataset.key, 0]));
-  let typingTimer;
+  let typingTimer, toastTimer;
+  const showToast = text => {
+    toastMsg.textContent = text; toast.classList.add("show"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+  };
   const compose = () => {
     const items = Object.entries(qty).filter(([, n]) => n > 0);
     const when = document.querySelector('input[name="when"]:checked')?.value;
     let msg = "¡Hola Pecatté! 🍓 Quiero hacer un pedido";
-    if (items.length) msg += ":\n" + items.map(([k, n]) => `• ${n} × ${k}`).join("\n");
-    else msg += ".";
+    if (items.length) {
+      const vasos = items.reduce((a, [, n]) => a + n, 0);
+      msg += ":\n" + items.map(([k, n]) => `• ${n} × ${k} — ${money(n * PRECIO)}`).join("\n");
+      msg += `\n\nTotal: ${vasos} ${vasos === 1 ? "vaso" : "vasos"} × ${money(PRECIO)}`;
+      msg += `\n💰 Total a pagar: ${money(vasos * PRECIO)}`;
+    } else msg += ".";
     if (when) msg += `\nPara: ${when}`;
     if (note.value.trim()) msg += `\nNota: ${note.value.trim()}`;
+    if (items.length) msg += "\n\nEl pedido queda confirmado cuando realices el pago.";
     return msg;
   };
   const render = () => {
@@ -613,39 +705,61 @@ const WA_TEXT = "¡Hola Pecatté! Quiero hacer un pedido 🍓";
     preview.style.animation = "none"; preview.offsetWidth; preview.style.animation = "";
     document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(msg));
     const total = Object.values(qty).reduce((a, b) => a + b, 0);
-    if (totalEl.textContent !== String(total)) { totalEl.textContent = total; totalEl.classList.remove("bump"); totalEl.offsetWidth; totalEl.classList.add("bump"); }
+    if (totalEl.textContent !== String(total)) {
+      totalEl.textContent = total; payEl.textContent = money(total * PRECIO);
+      cartN.textContent = total; cartN.hidden = !total; clearBtn.hidden = !total;
+      [totalEl, payEl, cartN].forEach(bump);
+    }
+    picks.forEach(p => {
+      const n = qty[p.dataset.key];
+      p.querySelector("output").textContent = n;
+      p.querySelector(".sub").textContent = n ? `${money(n * PRECIO)}` : `${money(PRECIO)} c/u`;
+      p.classList.toggle("on", n > 0);
+    });
+    cards.forEach(c => {
+      const n = qty[c.dataset.key], minus = c.querySelector('.incart [data-d="-1"]');
+      c.querySelector(".add").hidden = n > 0;
+      c.querySelector(".incart").hidden = !n;
+      c.querySelector(".incart .n").textContent = n;
+      c.querySelector(".incart .sub").textContent = money(n * PRECIO);
+      minus.classList.toggle("trash", n === 1);
+      minus.innerHTML = n === 1 ? trashIcon : "−";
+    });
     status.textContent = "escribiendo…"; status.classList.add("typing");
     clearTimeout(typingTimer);
     typingTimer = setTimeout(() => { status.textContent = "en línea"; status.classList.remove("typing"); }, 900);
   };
-  picks.forEach(p => p.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-    const k = p.dataset.key;
-    qty[k] = Math.max(0, Math.min(99, qty[k] + +b.dataset.d));
-    p.querySelector("output").textContent = qty[k];
-    p.classList.toggle("on", qty[k] > 0);
-    render();
-  })));
+  const change = (k, d) => { qty[k] = Math.max(0, Math.min(99, qty[k] + d)); render(); };
+  picks.forEach(p => p.querySelectorAll("button").forEach(b => b.addEventListener("click", () => change(p.dataset.key, +b.dataset.d))));
+  cards.forEach(c => {
+    const k = c.dataset.key;
+    c.querySelector(".add").addEventListener("click", () => {
+      change(k, 1);
+      c.querySelector('.incart [data-d="1"]').focus();
+      showToast(`Agregaste ${k} a tu pedido`);
+    });
+    c.querySelectorAll(".incart button").forEach(b => b.addEventListener("click", () => {
+      const d = +b.dataset.d;
+      change(k, d);
+      if (!qty[k]) { c.querySelector(".add").focus(); showToast(`Quitaste ${k} de tu pedido`); }
+    }));
+  });
+  clearBtn.addEventListener("click", () => {
+    Object.keys(qty).forEach(k => qty[k] = 0);
+    render(); showToast("Vaciaste tu pedido");
+  });
+  toast.querySelector("a").addEventListener("click", () => toast.classList.remove("show"));
   document.querySelectorAll('input[name="when"]').forEach(r => r.addEventListener("change", render));
   note.addEventListener("input", render);
   render();
 
-  // El botón flotante se oculta en la sección de pedidos (ya tiene sus propios botones)
-  const waFloat = document.getElementById("waFloat");
-  new IntersectionObserver(([e]) => waFloat.classList.toggle("hide", e.isIntersecting), { threshold: .15 })
-    .observe(document.getElementById("pedidos"));
-
-  // Menú: la segunda imagen se revela desde el cursor; en táctil alterna sola
-  document.querySelectorAll(".card").forEach(c => {
-    c.addEventListener("pointermove", e => {
-      const r = c.querySelector("figure").getBoundingClientRect();
-      c.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      c.style.setProperty("--my", `${e.clientY - r.top}px`);
-    });
-  });
-  if (!reduce && matchMedia("(hover: none)").matches) {
-    const cards = [...document.querySelectorAll(".card")];
-    cards.forEach((c, i) => setTimeout(() => setInterval(() => c.classList.toggle("flip"), 3200), i * 700));
-  }
+  // El botón flotante se oculta en el menú y en pedidos (taparía los controles y ya hay botones propios)
+  const waFloat = document.getElementById("waFloat"), hideIn = new Set();
+  const floatIO = new IntersectionObserver(es => {
+    es.forEach(e => e.isIntersecting ? hideIn.add(e.target) : hideIn.delete(e.target));
+    waFloat.classList.toggle("hide", hideIn.size > 0);
+  }, { threshold: .05 });
+  ["menu", "pedidos"].forEach(id => floatIO.observe(document.getElementById(id)));
 
   // Menú móvil
   const burger = document.getElementById("burger"), mm = document.getElementById("mobileMenu");
